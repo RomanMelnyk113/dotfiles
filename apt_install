@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+apt_packages=$(cat <<EOF
+neovim
+tmux
+git
+htop
+tree
+wget
+bash-completion@2
+docker-completion
+docker-compose
+gcc
+jq
+ctags
+colordiff
+pgcli
+nvm
+fzf
+EOF
+)
+
+apt install $apt_packages

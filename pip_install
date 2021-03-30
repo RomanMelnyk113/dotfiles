@@ -1,0 +1,4 @@
+
+#!/usr/bin/env bash
+
+pip3 install --user black flake8 isort jedi pynvim

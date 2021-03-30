@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+brew_packages=$(cat <<EOF
+neovim
+moreutils
+exiftool
+coreutils
+tmux
+git
+git-standup
+htop
+tree
+wget
+bash-completion@2
+docker-completion
+docker-compose
+gcc
+imagemagick
+jq
+ctags
+colordiff
+pgcli
+nvm
+fzf
+EOF
+)
+
+brew install $brew_packages

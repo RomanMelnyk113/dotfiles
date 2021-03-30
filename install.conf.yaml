@@ -1,7 +1,39 @@
-- clean: ['~']
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~', '~/.vim', '~/.config']
 
 - link:
     ~/.bashrc: bashrc
     ~/.tmux.conf: tmux.conf
+    ~/.vim/coc-settings.json: coc-settings.json 
+    ~/.config/nvim: nvim
+    ~/.tmux.conf: tmux.conf
+    ~/.gitconfig: gitconfig
+    ~/.bash_aliases: bash_aliases
+    ~/.config/alacritty: alacritty
 
+- create:
+  - ~/Sources
 
+- shell:
+  #- command: ./pkg_install
+    #stderr: true
+    #description: Installing system packages
+  - command: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    stderr: true
+    description: Install ohmyzsh
+  - command: ./brew_install
+    stderr: true
+    description: Installing brew packages
+  - [$(brew --prefix)/opt/fzf/install, Installing fzf]
+  - [nvm install node, Install the latest node]
+  - command: ./pip_install
+    stderr: true
+    description: Installing pip packages
+  #- command: ./npm_install
+    #stderr: true
+    #description: Installing npm packages
+  - 'grep starship ~/.bashrc && exit 0 || echo "eval \"\$(starship init bash)\"" >> ~/.bashrc'
