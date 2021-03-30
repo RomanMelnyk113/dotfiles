@@ -1,4 +1,4 @@
 
 #!/usr/bin/env bash
 
-pip3 install --user black flake8 isort jedi pynvim
+sudo pip3 install --user pyenv black flake8 isort jedi pynvim
