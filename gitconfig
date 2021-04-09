@@ -1,44 +1,43 @@
 [user]
-	name = Roman Melnyk
-	email = roman.melnyk20071992@gmail.com
+    name = Roman Melnyk 
 
 [alias]
-        s     = stash
-        co    = checkout
-        br    = branch
-        mbr   = "!bash -c '. ~/.dotfiles/githelpers && merged_branches'"
-        lbr   = "!bash -c '. ~/.dotfiles/githelpers && local_merged_branches'"
-        rbr   = "!bash -c '. ~/.dotfiles/githelpers && remote_merged_branches'"
-        dmbr  = "!bash -c '. ~/.dotfiles/githelpers && merged_branches | delete_branches'"
-        dlbr  = "!bash -c '. ~/.dotfiles/githelpers && local_merged_branches | delete_branches'"
-        drbr  = "!bash -c '. ~/.dotfiles/githelpers && remote_merged_branches | delete_branches'"
-        ci    = commit --verbose
-        st    = status
-        l     = "!bash -c '. ~/.dotfiles/githelpers && pretty_git_log $@' -"
-        r     = !GIT_NO_PAGER=1 git l -30
-        la    = !git l --all
-        fap   = fetch --all -p
-        amend = commit --amend
-        dc    = diff --cached
-        dcw   = diff --cached --color-words
-        df    = diff
-        dw    = diff --color-words
-        all   = add --all
-        up    = standup -d 1 -f
-        poo   = push origin HEAD
-        rom   = !git fap && git rebase origin/master
-        rod   = !git fap && git rebase origin/develop
+    s     = stash
+    co    = checkout
+    br    = branch
+    mbr   = "!bash -c '. ~/.dotfiles/githelpers && merged_branches'"
+    lbr   = "!bash -c '. ~/.dotfiles/githelpers && local_merged_branches'"
+    rbr   = "!bash -c '. ~/.dotfiles/githelpers && remote_merged_branches'"
+    dmbr  = "!bash -c '. ~/.dotfiles/githelpers && merged_branches | delete_branches'"
+    dlbr  = "!bash -c '. ~/.dotfiles/githelpers && local_merged_branches | delete_branches'"
+    drbr  = "!bash -c '. ~/.dotfiles/githelpers && remote_merged_branches | delete_branches'"
+    ci    = commit --verbose
+    st    = status
+    l     = "!bash -c '. ~/.dotfiles/githelpers && pretty_git_log $@' -"
+    r     = !GIT_NO_PAGER=1 git l -30
+    la    = !git l --all
+    fap   = fetch --all -p
+    amend = commit --amend
+    dc    = diff --cached
+    dcw   = diff --cached --color-words
+    df    = difftool --tool=nvimdiff
+    dw    = diff --color-words
+    all   = add --all
+    up    = standup -d 1 -f
+    poo   = push origin HEAD
+    rom   = !git fap && git rebase origin/master
+    rod   = !git fap && git rebase origin/develop
 
 [color]
-	ui   = true
-	diff = auto
+    ui   = true
+    diff = auto
 
 [diff]
-	mnemonicprefix = true
+    mnemonicprefix = true
 
 [core]
-	editor = nvim
-	excludesfile = ~/.dotfiles/gitignore
+    editor = nvim
+    excludesfile = ~/.dotfiles/gitignore
 
 [init]
-	templatedir = ~/.dotfiles/git-templates/
+    templatedir = ~/.dotfiles/git-templates/
