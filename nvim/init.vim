@@ -17,10 +17,9 @@ Plug 'scrooloose/nerdcommenter'
 " Дополнение для Git, а также иконки для NERDTree
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
-" Линия статуса
-Plug 'itchyny/lightline.vim'
 " Темы
 Plug 'patstockwell/vim-monokai-tasty'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'joshdick/onedark.vim'
 " Поддержка Python
 " Status bar plugins
@@ -35,10 +34,14 @@ Plug 'tpope/vim-repeat'
 "Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-abolish'
 Plug 'machakann/vim-highlightedyank'
-Plug 'tmhedberg/SimpylFold'
-Plug 'Konfekt/FastFold'
+"Plug 'tmhedberg/SimpylFold'
+"Plug 'Konfekt/FastFold'
 " help to highlight syntax
 Plug 'sheerun/vim-polyglot'
+" db plugin
+Plug 'tpope/vim-dadbod'
+
+Plug 'puremourning/vimspector'             " debugger
 call plug#end()
 
 " Autoinstall plugins 
@@ -69,6 +72,11 @@ nmap в d
 
 " let vim know that we want to use pylint
 "let g:neomake_python_enabled_makers = ['pylint']
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+let g:vimspector_enable_mappings = 'HUMAN'
 
 " В нормальном режиме Ctrl+n вызывает :NERDTree
 nmap <leader>n :NERDTreeFocus<CR>
@@ -76,8 +84,11 @@ nmap <C-n> :NERDTree<CR>
 nmap <C-t> :NERDTreeToggle<CR>
 "nmap <C-f> :FZF<CR>
 nmap <C-f> :GFiles<CR>
-nmap <leader>f :Ag<CR>
-nmap <leader>ff :Rg<CR>
+nnoremap <leader>f :Rg<CR>
+" replace default vim grep functionlality
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+" https://github.com/junegunn/fzf.vim/issues/346#issuecomment-288483704
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " add new line
 nmap <silent> <space> :exe "normal i".nr2char(getchar())<CR>
@@ -116,11 +127,10 @@ endif
 set encoding=utf-8
 set t_Co=256                                " 256 colors
 set guifont=mononoki\ Nerd\ Font\ 18
-let g:vim_monokai_tasty_italic = 1
-colorscheme vim-monokai-tasty
+"let g:vim_monokai_tasty_italic = 1
+colorscheme onehalfdark
 " Optional themes for airline/lightline
-let g:airline_theme='monokai_tasty'                   " airline theme
-let g:lightline = { 'colorscheme': 'monokai_tasty' }  " lightline theme
+let g:airline_theme='onehalfdark'                   " airline theme
 " from https://www.reddit.com/r/vim/comments/6z4aau/how_to_stop_vim_from_autohighlighting_italics_in/
 command! What echo synIDattr(synID(line('.'), col('.'), 1), 'name')
 " If you don't like a particular colour choice from `vim-monokai-tasty`, you can
@@ -137,6 +147,8 @@ set shell=/bin/zsh
 set number                                  " show line numbers
 set ruler
 set ttyfast                                 " terminal acceleration
+set lazyredraw
+set autoread                                " autoread file
 
 "set foldmethod=indent
 set tabstop=4                               " 4 whitespaces for tabs visual presentation
@@ -169,13 +181,13 @@ set relativenumber                          " display relative numbersj
 " coc.nvim specific
 let g:coc_global_extensions = [
   \'coc-json',
-  \'coc-tsserver',
   \'coc-html',
   \'coc-css',
   \'coc-yaml',
   \'coc-pyright',
   \'coc-emoji',
   \'coc-snippets',
+  \'coc-sql',
   \'coc-lists',
   \'coc-tag',
   \'coc-omni',
@@ -212,8 +224,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-vmap <leader>f <Plug>(coc-format-selected)
-nmap <leader>f <Plug>(coc-format-selected)
+vmap <leader>l <Plug>(coc-format-selected)
+nmap <leader>l <Plug>(coc-format-selected)
 
 nmap <silent> ]e <Plug>(coc-diagnostic-next)
 nmap <silent> [e <Plug>(coc-diagnostic-prev)

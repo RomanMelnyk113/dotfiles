@@ -22,6 +22,7 @@ colordiff
 pgcli
 nvm
 fzf
+ripgrep
 EOF
 )
 
