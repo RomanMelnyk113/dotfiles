@@ -9,7 +9,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " NERDTree - быстрый просмотр файлов
 Plug 'preservim/nerdtree'
-" Сoc - автодополнение 
+" Сoc - автодополнение
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Дополнения для NERDTree
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -18,7 +18,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 " Темы
-Plug 'patstockwell/vim-monokai-tasty'
+"Plug 'patstockwell/vim-monokai-tasty'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'joshdick/onedark.vim'
 " Поддержка Python
@@ -39,12 +39,12 @@ Plug 'machakann/vim-highlightedyank'
 " help to highlight syntax
 Plug 'sheerun/vim-polyglot'
 " db plugin
-Plug 'tpope/vim-dadbod'
+"Plug 'tpope/vim-dadbod'
 
-Plug 'puremourning/vimspector'             " debugger
+"Plug 'puremourning/vimspector'             " debugger
 call plug#end()
 
-" Autoinstall plugins 
+" Autoinstall plugins
 autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
@@ -98,9 +98,6 @@ let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore = ['^node_modules$']
 
-" Тема для **NeoVim**
-"syntax on
-"let g:vim_monokai_tasty_italic = 1
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -126,19 +123,15 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 set encoding=utf-8
 set t_Co=256                                " 256 colors
-set guifont=mononoki\ Nerd\ Font\ 18
+"set guifont=DroidSansMono_Nerd_Font:h11
+set guifont=Fira\ Code:h12
+let g:airline_powerline_fonts = 1
 "let g:vim_monokai_tasty_italic = 1
 colorscheme onehalfdark
 " Optional themes for airline/lightline
 let g:airline_theme='onehalfdark'                   " airline theme
 " from https://www.reddit.com/r/vim/comments/6z4aau/how_to_stop_vim_from_autohighlighting_italics_in/
 command! What echo synIDattr(synID(line('.'), col('.'), 1), 'name')
-" If you don't like a particular colour choice from `vim-monokai-tasty`, you can
-" override it here. For example, to change the colour of the search hightlight:
-"hi ppythonBuilti guifg=#bada55 guibg=#000000 gui=bold ctermfg=green ctermbg=black cterm=bold
-"let g:airline_theme='wombat'                " set airline theme
-"let g:onedark_termcolors=256
-"let g:onedark_terminal_italics=1
 syntax enable                               " enable syntax highlighting
 
 set pyxversion=0
@@ -150,7 +143,6 @@ set ttyfast                                 " terminal acceleration
 set lazyredraw
 set autoread                                " autoread file
 
-"set foldmethod=indent
 set tabstop=4                               " 4 whitespaces for tabs visual presentation
 set shiftwidth=4                            " shift lines by 4 spaces
 set smarttab                                " set tabs for a shifttabs logic
@@ -175,8 +167,6 @@ set clipboard=unnamed                       " use system clipboard
 set exrc                                    " enable usage of additional .vimrc files from working directory
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 set relativenumber                          " display relative numbersj
-" Simply fold configuration
-"let g:SimpylFold_docstring_preview = 1
 
 " coc.nvim specific
 let g:coc_global_extensions = [
@@ -284,6 +274,7 @@ endfunction
 "hi link dFunction Function
 
 " Test Vim
+let test#python#pytest#options = '-vv'
 "let test#strategy = "dispatch"
 nnoremap <Leader>rf :TestFile<CR>
 nnoremap <Leader>rs :TestNearest<CR>
