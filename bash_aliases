@@ -5,5 +5,7 @@ alias ts=timestamp
 alias g=git
 alias ll='ls -AlF'
 alias l='ls -ACF'
+alias ff=nvim $(fzf)
+alias v=nvim
 alias activate='[ -d ./venv ] && source ./venv/bin/activate'
 
