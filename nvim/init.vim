@@ -42,6 +42,7 @@ Plug 'sheerun/vim-polyglot'
 "Plug 'tpope/vim-dadbod'
 
 Plug 'puremourning/vimspector'             " debugger
+Plug 'gotcha/vimpdb'
 call plug#end()
 
 " Autoinstall plugins
@@ -73,3 +74,4 @@ source $HOME/.config/nvim/nerdtree.vim
 source $HOME/.config/nvim/vimspector.vim
 source $HOME/.config/nvim/fzf.vim
 source $HOME/.config/nvim/test.vim
+source $HOME/.config/nvim/git.vim
