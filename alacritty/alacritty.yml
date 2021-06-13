@@ -14,38 +14,21 @@ window:
 # Sample Font configuration for font: Monoid.
 # Feel free to use different font configuration family & face for each sections
 font:
-  # Normal font face - Also used to draw glyphs on tmux & VIM
-  # NOTE: You may use any font you'd like but make sure the normal fonts
-  # support ligatures/glyphs. That's used by tmux & VIM to provide a better
-  # UI for powerline & tmux bottom bar.
   normal:
-    # Font name
-    family: "Fira Code"
-    # Font face
-    style: Retina
-
-#  # Bold font face
+    family: "MesloLGS NF"
+    style: Regular
   bold:
-    family: "Fira Code"
+    family: "MesloLGS NF"
     style: Bold
-
-#  # Italic font face
   italic:
-    family: "Fira Code"
+    family: "MesloLGS NF"
     style: Italic
-
-#  # Bold italic font face
-#  # Note: Since i don't have a font italic version of this font, I just specified
-#  # italic & it just works. You may specifiy the bold italic version if it exists
-#  # for your font
   bold_italic:
-    family: "Fira Code"
+    family: "MesloLGS NF"
     style: Italic
 
-  # Font size
   size: 16.0
 
-  # Better font rendering for mac
   use_thin_strokes: true
 
 selection:
