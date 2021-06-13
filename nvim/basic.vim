@@ -7,7 +7,8 @@ endif
 set encoding=utf-8
 set t_Co=256                                " 256 colors
 "set guifont=DroidSansMono_Nerd_Font:h11
-set guifont=FiraCode_Nerd_Font:h12
+"set guifont=FiraCode_Nerd_Font:h12
+set guifont=Hack_Nerd_Font:h12
 "let g:vim_monokai_tasty_italic = 1
 colorscheme onehalfdark
 
@@ -20,6 +21,7 @@ set ruler
 set ttyfast                                 " terminal acceleration
 set lazyredraw
 set autoread                                " autoread file
+set nowrap
 
 set tabstop=4                               " 4 whitespaces for tabs visual presentation
 set shiftwidth=4                            " shift lines by 4 spaces
