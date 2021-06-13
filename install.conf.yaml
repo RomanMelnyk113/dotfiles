@@ -11,6 +11,9 @@
     ~/.tmux.conf: tmux.conf
     ~/.gitconfig: gitconfig
     ~/.bash_aliases: bash_aliases
+    ~/.config/pgcli: 
+      glob: true
+      path: pgcli/*
     ~/.config/nvim: 
       glob: true
       path: nvim/* 
