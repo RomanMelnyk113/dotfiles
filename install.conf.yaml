@@ -11,6 +11,7 @@
     ~/.tmux.conf: tmux.conf
     ~/.gitconfig: gitconfig
     ~/.bash_aliases: bash_aliases
+    ~/.config/karabiner/karabiner.json: karabiner.json
     ~/.config/pgcli: 
       glob: true
       path: pgcli/*
