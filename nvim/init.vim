@@ -41,7 +41,6 @@ Plug 'sheerun/vim-polyglot'
 " db plugin
 "Plug 'tpope/vim-dadbod'
 
-Plug 'puremourning/vimspector'             " debugger
 Plug 'gotcha/vimpdb'
 call plug#end()
 
