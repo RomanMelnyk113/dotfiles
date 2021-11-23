@@ -18,9 +18,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 " Темы
-"Plug 'patstockwell/vim-monokai-tasty'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
-"Plug 'joshdick/onedark.vim'
 " Поддержка Python
 " Status bar plugins
 Plug 'vim-airline/vim-airline'
@@ -34,14 +32,11 @@ Plug 'tpope/vim-repeat'
 "Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-abolish'
 Plug 'machakann/vim-highlightedyank'
-"Plug 'tmhedberg/SimpylFold'
-"Plug 'Konfekt/FastFold'
 " help to highlight syntax
 Plug 'sheerun/vim-polyglot'
-" db plugin
-"Plug 'tpope/vim-dadbod'
 
 Plug 'gotcha/vimpdb'
+Plug 'tweekmonster/django-plus.vim'
 call plug#end()
 
 " Autoinstall plugins

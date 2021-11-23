@@ -15,19 +15,24 @@ window:
 # Feel free to use different font configuration family & face for each sections
 font:
   normal:
-    family: "MesloLGS NF"
+    family: "FiraCode" 
+    #family: "MesloLGS NF" # use it for MacOS
     style: Regular
   bold:
-    family: "MesloLGS NF"
+    family: "FiraCode"
+    #family: "MesloLGS NF" # use it for MacOS
     style: Bold
   italic:
-    family: "MesloLGS NF"
+    family: "FiraCode"
+    #family: "MesloLGS NF" # use it for MacOS
     style: Italic
   bold_italic:
-    family: "MesloLGS NF"
+    family: "FiraCode"
+    #family: "MesloLGS NF" # use it for MacOS
     style: Italic
 
-  size: 16.0
+  size: 12.0
+
 
   use_thin_strokes: true
 

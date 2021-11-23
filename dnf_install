@@ -10,19 +10,29 @@ git
 htop
 tree
 wget
-bash-completion@2
-docker-completion
 docker-compose
 gcc
 jq
 ctags
 colordiff
 pgcli
-nvm
 fzf
 curl
+zlib-devel
+bzip2
+bzip2-devel 
+readline-devel 
+sqlite 
+sqlite-devel 
+openssl-devel 
+xz 
+xz-devel 
+libffi-devel 
+findutils 
 EOF
 )
 
 
-sudo apt install $apt_packages
+sudo dnf install $apt_packages -y
+sudo dnf groupinstall "Development Tools" -y
+
