@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 brew_packages=$(cat <<EOF
+alacritty
 neovim
 moreutils
 exiftool
@@ -24,6 +25,7 @@ nvm
 fzf
 ripgrep
 nodejs
+rectangle
 EOF
 )
 
