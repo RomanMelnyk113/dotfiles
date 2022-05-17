@@ -122,3 +122,6 @@ bindkey -v
 
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="$HOME/.go/bin:$PATH"
+export PATH="$HOME/.ebcli-virtual-env/executables:$PATH"
+export GOPATH=$HOME/.go

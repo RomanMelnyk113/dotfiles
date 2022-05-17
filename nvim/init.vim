@@ -27,6 +27,7 @@ Plug 'vim-airline/vim-airline'
 " Testing
 Plug 'janko-m/vim-test'
 " Other
+Plug 'preservim/tagbar'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 "Plug 'tpope/vim-eunuch'
@@ -37,6 +38,14 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'gotcha/vimpdb'
 Plug 'tweekmonster/django-plus.vim'
+
+" Javascript support
+Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
+
+" Golang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'sebdah/vim-delve'
 call plug#end()
 
 " Autoinstall plugins
@@ -69,3 +78,4 @@ source $HOME/.config/nvim/vimspector.vim
 source $HOME/.config/nvim/fzf.vim
 source $HOME/.config/nvim/test.vim
 source $HOME/.config/nvim/git.vim
+source $HOME/.config/nvim/golang.vim

@@ -31,7 +31,10 @@
     "typescript",
     "typescriptreact",
     "dockerfile",
+    "go",
     "sh",
+    "yaml",
+    "yml",
     "html"
   ],
   "coc.preferences.rootPatterns": [
@@ -45,5 +48,18 @@
     "venv",
     "Pipfile",
     "Pipfile.lock"
-  ]
+  ],
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
+    }
+  },
+  "yaml.schemas": {
+      "kubernetes": "/*.yaml"
+  },
+  "go.goplsOptions": {
+    "staticcheck": true
+  }
 }
