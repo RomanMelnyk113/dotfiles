@@ -80,7 +80,7 @@ EDITOR='nvim'
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    zsh-vi-mode
+    history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -115,6 +115,7 @@ alias vf='nvim $(fzf)'
 
 # enable VI mode
 bindkey -v
+bindkey "^R" history-incremental-search-backward
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
