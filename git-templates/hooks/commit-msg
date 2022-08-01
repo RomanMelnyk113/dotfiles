@@ -15,5 +15,5 @@ TICKET="$(parse_ticket)"
 
 if [ -n "$TICKET" ]
 then
-  echo "[$TICKET] $MESSAGE" > $1
+  echo "$TICKET: $MESSAGE" > $1
 fi

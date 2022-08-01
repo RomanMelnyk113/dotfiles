@@ -42,6 +42,8 @@
     ".git",
     ".projections.json",
     "pubspec.lock",
+    "pubspec.lock",
+    "Gopkg.lock",
     "package.json",
     "Makefile",
     "requirements.txt",
@@ -49,17 +51,13 @@
     "Pipfile",
     "Pipfile.lock"
   ],
-  "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"]
-    }
-  },
+  "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
+  "go.goplsPath": "/Users/roman/.go/bin/gopls",
+  "go.formatFlags": ["-s"],
   "yaml.schemas": {
       "kubernetes": "/*.yaml"
   },
-  "go.goplsOptions": {
-    "staticcheck": true
-  }
+  "eslint.packageManager": "yarn",
+  "eslint.nodePath": ".yarn/sdks",
+  "workspace.workspaceFolderCheckCwd": false
 }

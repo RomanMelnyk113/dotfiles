@@ -10,11 +10,14 @@ call plug#begin()
 "Plug 'ludovicchabant/vim-gutentags'
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb' " required by fugitive to :GBrowse
+Plug 'shumphrey/fugitive-gitlab.vim' " required by fugitive to :GBrowse
 " FuzzyFinder (для быстрого поиска)
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " NERDTree - быстрый просмотр файлов
 Plug 'preservim/nerdtree'
+"Plug 'jistr/vim-nerdtree-tabs'
 " Сoc - автодополнение
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Дополнения для NERDTree
@@ -25,9 +28,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 " Темы
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'joshdick/onedark.vim'
+
+Plug 'dense-analysis/ale'
 " Поддержка Python
 " Status bar plugins
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'vim-scripts/CSApprox'
 " Automatic quotes
 "Plug 'jiangmiao/auto-pairs'
 " Testing
@@ -43,7 +52,10 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'sheerun/vim-polyglot'
 
 Plug 'gotcha/vimpdb'
+Plug 'mfussenegger/nvim-dap'
+Plug 'puremourning/vimspector'
 Plug 'tweekmonster/django-plus.vim'
+Plug 'SirVer/ultisnips'
 
 " Javascript support
 Plug 'pangloss/vim-javascript'
@@ -52,6 +64,19 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sebdah/vim-delve'
+
+"" Vim-Session
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+
+let b:NERDTree = getbufvar('NERDTree', 'NERDTree')
+let b:NERDTreeToogle = getbufvar('NERDTreeToggle', 'NERDTreeToggle')
+
+let g:make = 'gmake'
+if exists('make')
+        let g:make = 'make'
+endif
+Plug 'Shougo/vimproc.vim', {'do': g:make}
 call plug#end()
 
 " Autoinstall plugins
@@ -85,3 +110,4 @@ source $HOME/.config/nvim/fzf.vim
 source $HOME/.config/nvim/test.vim
 source $HOME/.config/nvim/git.vim
 source $HOME/.config/nvim/golang.vim
+source $HOME/.config/nvim/ultisnips.vim
