@@ -76,6 +76,7 @@ inoremap jk <ESC>
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
+let g:tagbar_highlight_method = 'nearest'
 
 " Disable visualbell
 set noerrorbells visualbell t_vb=
@@ -229,3 +230,15 @@ noremap <leader>bp :bp<CR>
 "noremap <leader>q :bp<CR>
 noremap <leader>bn :bn<CR>
 "noremap <leader>w :bn<CR>
+"
+"
+" Fold settings
+set foldmethod=indent   " fold based on indent
+"set foldnestmax=10
+"set nofoldenable
+"set foldlevel=2
+"hi Folded ctermbg=244
+"https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+highlight Folded ctermfg=244
+"highlight Folded ctermbg=grey ctermfg=blue
+"highlight FoldColumn ctermbg=darkgrey ctermfg=white
