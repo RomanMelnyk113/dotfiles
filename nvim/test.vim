@@ -1,7 +1,8 @@
 " Test Vim
 let test#python#pytest#options = '-vv'
 let test#go#runner = 'gotest'
-let test#go#gotest#options = '-v'
+let test#go#gotest#options = '-v -race'
+"let test#go#gotest#options = '-v -race -cover -memprofile mem.prof -cpuprofile cpu.prof'
 let test#go#gotest#executable = 'gotest'
 "let test#strategy = "neovim"
 let test#neovim#term_position = "vert"

@@ -51,8 +51,8 @@ Plug 'machakann/vim-highlightedyank'
 " help to highlight syntax
 Plug 'sheerun/vim-polyglot'
 
-Plug 'gotcha/vimpdb'
-Plug 'mfussenegger/nvim-dap'
+"Plug 'gotcha/vimpdb'
+"Plug 'mfussenegger/nvim-dap'
 Plug 'puremourning/vimspector'
 Plug 'tweekmonster/django-plus.vim'
 Plug 'SirVer/ultisnips'
@@ -63,11 +63,12 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'sebdah/vim-delve'
+"Plug 'sebdah/vim-delve'
+Plug 'buoto/gotests-vim'
 
 "" Vim-Session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-session'
 
 let b:NERDTree = getbufvar('NERDTree', 'NERDTree')
 let b:NERDTreeToogle = getbufvar('NERDTreeToggle', 'NERDTreeToggle')

@@ -9,6 +9,7 @@ let g:go_metalinter_enabled = []
 " don't jump to errors after metalinter is invoked
 let g:go_jump_to_error = 0
 
+let g:go_def_mode = "gopls"
 " run go imports on file save
 let g:go_fmt_command = "goimports"
 let g:go_fmt_options = {
@@ -32,6 +33,7 @@ let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 1
 let g:go_doc_popup_window = 1
+let g:go_fmt_experimental = 1
 "let g:delve_backend = "rr"
 "
 " go

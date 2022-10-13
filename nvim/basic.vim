@@ -235,7 +235,7 @@ noremap <leader>bn :bn<CR>
 " Fold settings
 set foldmethod=indent   " fold based on indent
 "set foldnestmax=10
-"set nofoldenable
+set nofoldenable
 "set foldlevel=2
 "hi Folded ctermbg=244
 "https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
