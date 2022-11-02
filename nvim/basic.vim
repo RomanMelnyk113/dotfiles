@@ -10,9 +10,10 @@ set t_Co=256                                " 256 colors
 "set guifont=FiraCode_Nerd_Font:h12
 set guifont=Hack_Nerd_Font:h12
 "let g:vim_monokai_tasty_italic = 1
-colorscheme onehalfdark
+colorscheme onedark
+"colorscheme tokyonight
 
-syntax enable                               " enable syntax highlighting
+"syntax enable                               " enable syntax highlighting
 set pyxversion=0
 let g:loaded_python_provider = 1
 set shell=/bin/zsh
