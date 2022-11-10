@@ -63,7 +63,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'puremourning/vimspector'
 Plug 'tweekmonster/django-plus.vim'
 "Plug 'SirVer/ultisnips'
-Plug 'L3MON4D3/LuaSnip', {'tag': 'v<CurrentMajor>.*'}
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v1.*'}
+Plug 'rafamadriz/friendly-snippets'
 
 " Javascript support
 Plug 'pangloss/vim-javascript'
@@ -78,11 +79,11 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " nvim complete
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
+"Plug 'hrsh7th/cmp-nvim-lsp'
+"Plug 'hrsh7th/cmp-buffer'
+"Plug 'hrsh7th/cmp-path'
+"Plug 'hrsh7th/cmp-cmdline'
+"Plug 'hrsh7th/nvim-cmp'
 
 " Git diff
 Plug 'nvim-lua/plenary.nvim'
@@ -93,11 +94,13 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Tabs
 Plug 'romgrk/barbar.nvim'
-
+" Hop anywhere
+Plug 'phaazon/hop.nvim'
 
 "" Vim-Session
-"Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-session'
+Plug 'rmagatti/auto-session'
+
+Plug 'norcalli/nvim-colorizer.lua'
 
 let b:NERDTree = getbufvar('NERDTree', 'NERDTree')
 let b:NERDTreeToogle = getbufvar('NERDTreeToggle', 'NERDTreeToggle')
@@ -146,7 +149,10 @@ source $HOME/.config/nvim/ultisnips.vim
 
 lua require('nvimtree')
 lua require('linelua')
-lua require('luacmp')
+"lua require('luacmp')
 lua require('luatelescope')
 lua require('luatreesitter')
 lua require('luabarbar')
+lua require('luahop')
+lua require('luasnippets')
+lua require('luadefault')

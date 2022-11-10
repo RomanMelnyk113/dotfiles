@@ -22,6 +22,7 @@
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
+  "coc.preferences.formatOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "python",
     "json",
@@ -63,7 +64,7 @@
   "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
   "go.goplsPath": "/Users/roman/.go/bin/gopls",
   "yaml.schemas": {
-      "kubernetes": "/*.yaml"
+    "kubernetes": "/*.yaml"
   },
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",

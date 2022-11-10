@@ -5,6 +5,7 @@ let g:coc_global_extensions = [
   \'coc-css',
   \'coc-yaml',
   \'coc-pyright',
+  \'coc-tsserver',
   \'coc-emoji',
   \'coc-snippets',
   \'coc-sql',
@@ -79,7 +80,7 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <C-TAB> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.

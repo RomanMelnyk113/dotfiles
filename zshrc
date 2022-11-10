@@ -120,6 +120,7 @@ EDITOR='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vf='nvim $(fzf)'
 alias k=kubectl
+alias python=python3
 complete -F __start_kubectl k
 
 # enable VI mode
@@ -134,7 +135,6 @@ export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$HOME/.go/bin:$PATH"
-export PATH="$HOME/.ebcli-virtual-env/executables:$PATH"
 export GOPATH=$HOME/.go
 
 # The next line updates PATH for the Google Cloud SDK.
