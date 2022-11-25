@@ -21,7 +21,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " NERDTree - быстрый просмотр файлов
 "Plug 'preservim/nerdtree'
 "Plug 'jistr/vim-nerdtree-tabs'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Дополнения для NERDTree
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdcommenter'
@@ -48,6 +48,10 @@ Plug 'vim-scripts/CSApprox'
 "Plug 'jiangmiao/auto-pairs'
 " Testing
 Plug 'janko-m/vim-test'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'leoluz/nvim-dap-go'
+
 " Other
 Plug 'preservim/tagbar'
 Plug 'tpope/vim-surround'
@@ -60,33 +64,40 @@ Plug 'sheerun/vim-polyglot'
 
 "Plug 'gotcha/vimpdb'
 "Plug 'mfussenegger/nvim-dap'
-Plug 'puremourning/vimspector'
+"Plug 'puremourning/vimspector'
 Plug 'tweekmonster/django-plus.vim'
 "Plug 'SirVer/ultisnips'
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v1.*'}
 Plug 'rafamadriz/friendly-snippets'
 
 " Javascript support
-Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
+"Plug 'pangloss/vim-javascript'
+"Plug 'MaxMEllon/vim-jsx-pretty'
 
 " Golang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "Plug 'sebdah/vim-delve'
 "Plug 'buoto/gotests-vim'
+Plug 'ray-x/go.nvim'
+Plug 'ray-x/guihua.lua'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'lvimuser/lsp-inlayhints.nvim'
 
 " nvim complete
 Plug 'neovim/nvim-lspconfig'
-"Plug 'hrsh7th/cmp-nvim-lsp'
-"Plug 'hrsh7th/cmp-buffer'
-"Plug 'hrsh7th/cmp-path'
-"Plug 'hrsh7th/cmp-cmdline'
-"Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'onsails/lspkind.nvim'
+Plug 'tzachar/cmp-tabnine', { 'do': 'powershell ./install.ps1' }
 
 " Git diff
-Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 "
 " Indent plugin
@@ -101,9 +112,6 @@ Plug 'phaazon/hop.nvim'
 Plug 'rmagatti/auto-session'
 
 Plug 'norcalli/nvim-colorizer.lua'
-
-let b:NERDTree = getbufvar('NERDTree', 'NERDTree')
-let b:NERDTreeToogle = getbufvar('NERDTreeToggle', 'NERDTreeToggle')
 
 let g:make = 'gmake'
 if exists('make')
@@ -135,24 +143,29 @@ nnoremap <C-S-Tab> :tabp<CR>
 
 
 source $HOME/.config/nvim/basic.vim
-source $HOME/.config/nvim/coc.vim
+"source $HOME/.config/nvim/coc.vim
 "source $HOME/.config/nvim/airline.vim
 "source $HOME/.config/nvim/nerdtree.vim
-source $HOME/.config/nvim/vimspector.vim
+"source $HOME/.config/nvim/vimspector.vim
 "source $HOME/.config/nvim/fzf.vim
-source $HOME/.config/nvim/test.vim
+"source $HOME/.config/nvim/test.vim
 source $HOME/.config/nvim/git.vim
-source $HOME/.config/nvim/golang.vim
-source $HOME/.config/nvim/ultisnips.vim
+"source $HOME/.config/nvim/golang.vim
+"source $HOME/.config/nvim/ultisnips.vim
 
 "source $HOME/.config/nvim/nvimtree.vim
 
-lua require('nvimtree')
-lua require('linelua')
-"lua require('luacmp')
-lua require('luatelescope')
-lua require('luatreesitter')
-lua require('luabarbar')
-lua require('luahop')
-lua require('luasnippets')
-lua require('luadefault')
+"lua require('lsp')
+lua require('user.nvimtree')
+lua require('user.lualine')
+lua require('user.cmp')
+lua require('user.telescope')
+lua require('user.treesitter')
+lua require('user.barbar')
+lua require('user.hop')
+lua require('user.luasnip')
+lua require('user.go')
+lua require('user.dapui')
+lua require('user.lsp-inlayhints')
+lua require('user.lsp')
+lua require('user.default')
