@@ -168,3 +168,9 @@ zinit light jonmosco/kube-ps1
 PROMPT='$(kube_ps1)'$PROMPT  
 
 ### End of Zinit's installer chunk
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/roman/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

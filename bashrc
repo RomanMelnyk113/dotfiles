@@ -102,3 +102,7 @@ completions=(
 		# alias bashconfig="mate ~/.bashrc"
 		# alias ohmybash="mate ~/.oh-my-bash"
 		 
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/roman/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

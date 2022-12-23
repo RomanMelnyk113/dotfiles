@@ -41,6 +41,13 @@ local options = {
   -- colorcolumn = "80",
   colorcolumn = "120",
   backspace="indent,eol,start",
+  diffopt="vertical",
+  -- foldlevel = 99,
+  -- foldcolumn = 1,
+  foldenable= true,
+  -- foldmethod = "indent",
+  -- foldmethod = "expr",
+  -- foldexpr = "nvim_treesitter#foldexpr()",
 
 }
 -- vim.g.loaded_netrw = 1

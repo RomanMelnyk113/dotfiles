@@ -154,12 +154,15 @@ vim.api.nvim_set_keymap("n", "K", ":lua require('user.keymaps').show_documentati
  --vim.api.nvim_set_keymap("n", "<m-e>", "NvimTreeToggle<cr>", opts)
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-t>', ':NvimTreeFindFile<CR>', opts)
+vim.api.nvim_set_keymap('n', '<C-m>', ':SymbolsOutline<CR>', opts)
 -- vim.api.nvim_set_keymap(
 --   "n",
 --   "<m-f>",
 --   "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 --   opts
 -- )
+
+
 -- Comment
 keymap("n", "<m-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 keymap("x", "<m-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)

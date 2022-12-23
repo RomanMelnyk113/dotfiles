@@ -62,6 +62,7 @@ return packer.startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "ray-x/lsp_signature.nvim"
   use "SmiteshP/nvim-navic"
+  -- use 'stevearc/aerial.nvim' -- try it out later
   use "simrat39/symbols-outline.nvim"
   use "b0o/SchemaStore.nvim"
   use "RRethy/vim-illuminate"
@@ -79,15 +80,15 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-emoji"
   use "hrsh7th/cmp-nvim-lua"
-  use { "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e", 
-run = "./install.sh" }
+  use "onsails/lspkind.nvim"
+  use { "tzachar/cmp-tabnine", run = "./install.sh" }
 
   -- Snippet
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- Syntax/Treesitter
-  use "nvim-treesitter/nvim-treesitter"
+  use 'nvim-treesitter/nvim-treesitter'
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "p00f/nvim-ts-rainbow"
   use "nvim-treesitter/playground"
@@ -139,8 +140,11 @@ run = "./install.sh" }
 
   -- Icon
   use "kyazdani42/nvim-web-devicons"
+  use "ChristianChiarulli/neovim-codicons"
+  use 'mortepau/codicons.nvim'
 
   -- Debugging
+  use  "klen/nvim-test" 
   use "mfussenegger/nvim-dap"
   use "rcarriga/nvim-dap-ui"
   use 'leoluz/nvim-dap-go'
@@ -235,6 +239,8 @@ run = "./install.sh" }
     run = "cd app && npm install",
     ft = "markdown",
   }
+  -- Fold
+  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
   -- Graveyard
   -- use "romgrk/nvim-treesitter-context"

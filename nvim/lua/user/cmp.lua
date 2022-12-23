@@ -8,6 +8,11 @@ if not snip_status_ok then
   return
 end
 
+local lspkind_status_ok, lspkind = pcall(require, "lspkind")
+if not lspkind_status_ok then
+  return
+end
+
 local tabnine_status_ok, _ = pcall(require, "user.tabnine")
 if not tabnine_status_ok then
   return
@@ -52,6 +57,14 @@ vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
 
 vim.g.cmp_active = true
+
+local source_mapping = {
+	buffer = "[Buffer]",
+	nvim_lsp = "[LSP]",
+	nvim_lua = "[Lua]",
+	cmp_tabnine = "[TN]",
+	path = "[Path]",
+}
 
 cmp.setup {
   enabled = function()
@@ -135,36 +148,57 @@ cmp.setup {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
       -- Kind icons
-      vim_item.kind = kind_icons[vim_item.kind]
+      -- vim_item.kind = kind_icons[vim_item.kind]
+      vim_item.kind = lspkind.symbolic(vim_item.kind, {mode = "symbol"})
+	 		vim_item.menu = source_mapping[entry.source.name]
 
       if entry.source.name == "cmp_tabnine" then
-        vim_item.kind = icons.misc.Robot
+        local detail = (entry.completion_item.data or {}).detail
+        -- vim_item.kind = icons.misc.Robot
         vim_item.kind_hl_group = "CmpItemKindTabnine"
+        if detail and detail:find('.*%%.*') then
+	 				vim_item.kind = vim_item.kind .. ' ' .. detail
+	 			end
+        if (entry.completion_item.data or {}).multiline then
+	 				vim_item.kind = vim_item.kind .. ' ' .. '[ML]'
+	 			end
       end
 
+
       if entry.source.name == "emoji" then
-        vim_item.kind = icons.misc.Smiley
+        -- vim_item.kind = icons.misc.Smiley
         vim_item.kind_hl_group = "CmpItemKindEmoji"
       end
 
       if entry.source.name == "crates" then
-        vim_item.kind = icons.misc.Package
+        -- vim_item.kind = icons.misc.Package
         vim_item.kind_hl_group = "CmpItemKindCrate"
       end
 
       if entry.source.name == "lab.quick_data" then
-        vim_item.kind = icons.misc.CircuitBoard
+        -- vim_item.kind = icons.misc.CircuitBoard
         vim_item.kind_hl_group = "CmpItemKindConstant"
       end
 
+      local maxwidth = 80
+      vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
+
       -- NOTE: order matters
       vim_item.menu = ({
-        nvim_lsp = "",
-        nvim_lua = "",
-        luasnip = "",
-        buffer = "",
-        path = "",
-        emoji = "",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[Lua]",
+        cmp_tabnine = "[TN]",
+        luasnip = "[Snip]",
+        buffer = "[Buffer]",
+        path = "[Path]",
+        emoji = "[Emoji]",
+
+        -- nvim_lsp = "",
+        -- nvim_lua = "",
+        -- luasnip = "",
+        -- buffer = "",
+        -- path = "",
+        -- emoji = "",
       })[entry.source.name]
       return vim_item
     end,

@@ -183,6 +183,11 @@ local mappings = {
   },
 
   r = {
+    name = "Testing",
+    s = { "<cmd>TestNearest<cr>", "Test Nearest" },
+    f = { "<cmd>TestFile<cr>", "Test File" },
+  },
+  R = {
     name = "Replace",
     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
