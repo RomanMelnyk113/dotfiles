@@ -121,6 +121,7 @@ EDITOR='nvim'
 alias vf='nvim $(fzf)'
 alias k=kubectl
 alias python=python3
+alias lg=lazygit
 complete -F __start_kubectl k
 
 # enable VI mode

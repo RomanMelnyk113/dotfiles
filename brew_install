@@ -26,6 +26,7 @@ fzf
 ripgrep
 nodejs
 rectangle
+lazygit
 EOF
 )
 
