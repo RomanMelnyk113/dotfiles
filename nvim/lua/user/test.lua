@@ -43,7 +43,7 @@ require("nvim-test.runners.go-test"):setup {
     args = {
       "-v",
       -- "-race",
-      -- "-count=1"
+      "-count=1"
     },
     file_pattern = "\\v([^.]+_test)\\.go$", -- determine whether a file is a testfile
     find_files = { "{name}_test.go" }, -- find testfile for a file
