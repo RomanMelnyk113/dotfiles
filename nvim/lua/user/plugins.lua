@@ -194,8 +194,8 @@ return packer.startup(function(use)
   use "windwp/nvim-spectre"
 
   -- Session
-  use "rmagatti/auto-session"
-  use "rmagatti/session-lens"
+  -- use "rmagatti/auto-session"
+  -- use "rmagatti/session-lens"
 
   -- Quickfix
   use "kevinhwang91/nvim-bqf"
