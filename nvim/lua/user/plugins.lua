@@ -149,7 +149,20 @@ return packer.startup(function(use)
   use "rcarriga/nvim-dap-ui"
   use 'leoluz/nvim-dap-go'
   use 'mfussenegger/nvim-dap-python'
-  -- use "theHamsta/nvim-dap-virtual-text"
+  use "theHamsta/nvim-dap-virtual-text"
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      -- "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/neotest-go",
+      "nvim-neotest/neotest-plenary",
+      "nvim-neotest/neotest-vim-test",
+      "nvim-neotest/neotest-python",
+      "folke/neodev.nvim"
+    }
+  }
   -- use "Pocco81/DAPInstall.nvim"
 
   -- Tabline
@@ -241,6 +254,7 @@ return packer.startup(function(use)
   }
   -- Fold
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
 
   -- Graveyard
   -- use "romgrk/nvim-treesitter-context"

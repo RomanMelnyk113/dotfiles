@@ -184,8 +184,18 @@ local mappings = {
 
   r = {
     name = "Testing",
-    s = { "<cmd>TestNearest<cr>", "Test Nearest" },
-    f = { "<cmd>TestFile<cr>", "Test File" },
+    -- s = { "<cmd>TestNearest<cr>", "Test Nearest" },
+    -- f = { "<cmd>TestFile<cr>", "Test File" },
+
+    s = { '<cmd>lua require("neotest").run.run()<cr>', "Test Nearest" },
+    l = { '<cmd>lua require("neotest").run.run_last();require("neotest").output.open({ enter = true }) <cr>', "Test Last" },
+    f = { '<cmd>lua require("neotest").run.run(vim.fn.expand("%"));require("neotest").output.open({ enter = true }) <cr>', "Test File" },
+
+    p = { '<cmd>lua require("neotest").summary.toggle()<cr>', "Test Summary" },
+
+
+    O = { '<cmd>lua require("neotest").output_panel.toggle()<cr>', "Test Output panel" },
+    o = { '<cmd>lua require("neotest").output.open({ enter = true, last_run = true })<cr>', "Test Output" },
   },
   R = {
     name = "Replace",

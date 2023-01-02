@@ -89,6 +89,13 @@ for _, server in pairs(servers) do
       lspconfig = {
         on_attach = opts.on_attach,
         capabilities = opts.capabilities,
+        settings = {
+            Lua = {
+              completion = {
+                callSnippet = "Replace"
+              }
+            }
+          },
         --   -- settings = opts.settings,
       },
     }
