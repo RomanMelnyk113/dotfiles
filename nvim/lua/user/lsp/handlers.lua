@@ -46,6 +46,7 @@ M.setup = function()
     update_in_insert = true,
     underline = true,
     severity_sort = true,
+    -- severity = vim.diagnostic.severity.ERROR,
     float = {
       focusable = true,
       style = "minimal",

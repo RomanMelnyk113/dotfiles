@@ -25,7 +25,7 @@ local servers = {
   "yamlls",
   "bashls",
   -- "clangd",
-  "rust_analyzer",
+  -- "rust_analyzer",
   "taplo",
   "zk@v0.10.1",
   "lemminx"
@@ -128,17 +128,17 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", zk_opts, opts)
   end
 
-  if server == "rust_analyzer" then
-    local rust_opts = require "user.lsp.settings.rust"
-    -- opts = vim.tbl_deep_extend("force", rust_opts, opts)
-    local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
-    if not rust_tools_status_ok then
-      return
-    end
+  -- if server == "rust_analyzer" then
+  --   local rust_opts = require "user.lsp.settings.rust"
+  --   -- opts = vim.tbl_deep_extend("force", rust_opts, opts)
+  --   local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
+  --   if not rust_tools_status_ok then
+  --     return
+  --   end
 
-    rust_tools.setup(rust_opts)
-    goto continue
-  end
+  --   rust_tools.setup(rust_opts)
+  --   goto continue
+  -- end
 
   lspconfig[server].setup(opts)
   ::continue::
