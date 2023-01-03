@@ -150,6 +150,10 @@ return packer.startup(function(use)
   use 'leoluz/nvim-dap-go'
   use 'mfussenegger/nvim-dap-python'
   use "theHamsta/nvim-dap-virtual-text"
+  use({
+    "andythigpen/nvim-coverage",
+    requires = "nvim-lua/plenary.nvim",
+  })
   use {
     "nvim-neotest/neotest",
     requires = {
