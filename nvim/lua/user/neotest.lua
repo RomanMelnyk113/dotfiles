@@ -21,14 +21,14 @@ neotest.setup({
     }),
     require("neotest-plenary"),
     require("neotest-go")({
-      dap = { justMyCode = true },
-      experimental = {
-        test_table = true,
-      },
-      args = { "-count=1", "-timeout=60s", "-coverprofile=coverage.out" }
+      -- experimental = {
+      --   test_table = true,
+      -- },
+      args = { "-count=1", "-race", "-timeout=60s", "-coverprofile=coverage.out" }
+      -- args = { "-count=1", "-timeout=60s" }
     }),
     require("neotest-vim-test")({
-      ignore_file_types = { "python", "go", "vim", "lua" },
+      ignore_file_types = { "python", "vim", "lua" },
     }),
   },
 })

@@ -12,8 +12,8 @@ coverage.setup({
 	},
 	signs = {
 		-- use your own highlight groups or text markers
-		covered = { hl = "CoverageCovered", text = "▎" },
-		uncovered = { hl = "CoverageUncovered", text = "▎" },
+		covered = { hl = "CoverageCovered", text = " ▎" },
+		uncovered = { hl = "CoverageUncovered", text = " ▎" },
 	},
 	summary = {
 		-- customize the summary pop-up
