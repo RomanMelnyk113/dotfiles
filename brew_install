@@ -27,6 +27,7 @@ ripgrep
 nodejs
 rectangle
 lazygit
+httpie
 EOF
 )
 

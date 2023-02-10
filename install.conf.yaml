@@ -12,6 +12,7 @@
     ~/.gitconfig: gitconfig
     ~/.bash_aliases: bash_aliases
     ~/.config/karabiner/karabiner.json: karabiner.json
+    ~/.config/starship.toml: starship.toml
     ~/.config/pgcli: 
       glob: true
       path: pgcli/*

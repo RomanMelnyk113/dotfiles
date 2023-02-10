@@ -15,7 +15,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+export EDITOR='nvim'
+export K9S_EDITOR='nvim'
 EDITOR='nvim'
 
 # Set list of themes to pick from when loading at random
@@ -87,7 +89,7 @@ plugins=(
     kubectl
     golang
     history-substring-search
-
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -120,6 +122,7 @@ EDITOR='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vf='nvim $(fzf)'
 alias k=kubectl
+alias kx=kubectx
 alias python=python3
 alias lg=lazygit
 complete -F __start_kubectl k
@@ -175,3 +178,5 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/roman/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+eval "$(starship init zsh)"
