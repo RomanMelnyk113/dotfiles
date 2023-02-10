@@ -50,8 +50,11 @@ null_ls.setup {
     formatting.shfmt,
     formatting.gofmt,
     formatting.goimports,
+    formatting.goimports_reviser,
     diagnostics.flake8,
-    diagnostics.gopls,
+    -- diagnostics.revive,
+    -- diagnostics.golangci_lint,
+    -- diagnostics.staticcheck,
     diagnostics.shellcheck,
     diagnostics.djlint.with { 
       extra_filetypes = { "tpl" }
