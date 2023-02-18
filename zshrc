@@ -141,6 +141,9 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$HOME/.go/bin:$PATH"
 export GOPATH=$HOME/.go
 
+# GCP config
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/roman/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/roman/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -180,3 +183,7 @@ export PATH="/Users/roman/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 eval "$(starship init zsh)"
+
+
+
+eval "$(atuin init zsh)"
