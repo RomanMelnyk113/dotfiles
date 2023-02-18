@@ -90,17 +90,17 @@ return packer.startup(function(use)
   -- Syntax/Treesitter
   use 'nvim-treesitter/nvim-treesitter'
   use "JoosepAlviste/nvim-ts-context-commentstring"
-  use "p00f/nvim-ts-rainbow"
-  use "nvim-treesitter/playground"
-  use "windwp/nvim-ts-autotag"
+  -- use "p00f/nvim-ts-rainbow"
+  -- use "nvim-treesitter/playground"
+  -- use "windwp/nvim-ts-autotag"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   -- use "wellle/targets.vim"
   -- use "RRethy/nvim-treesitter-textsubjects"
   use "kylechui/nvim-surround"
-  use {
-    "abecodes/tabout.nvim",
-    wants = { "nvim-treesitter" }, -- or require if not used so far
-  }
+  -- use {
+  --   "abecodes/tabout.nvim",
+  --   wants = { "nvim-treesitter" }, -- or require if not used so far
+  -- }
 
   -- Marks
   use "christianchiarulli/harpoon"
@@ -108,7 +108,7 @@ return packer.startup(function(use)
 
   -- Fuzzy Finder/Telescope
   use "nvim-telescope/telescope.nvim"
-  use "nvim-telescope/telescope-media-files.nvim"
+  -- use "nvim-telescope/telescope-media-files.nvim"
   use "tom-anders/telescope-vim-bookmarks.nvim"
 
   -- Note Taking
@@ -124,7 +124,7 @@ return packer.startup(function(use)
   -- use 'joshdick/onedark.vim'
   use "lunarvim/onedarker.nvim"
   use "lunarvim/darkplus.nvim"
-  use "folke/tokyonight.nvim"
+  -- use "folke/tokyonight.nvim"
   -- use "lunarvim/colorschemes"
 
   -- Utility
@@ -133,10 +133,10 @@ return packer.startup(function(use)
   use "ghillb/cybu.nvim"
   use "moll/vim-bbye"
   use "lewis6991/impatient.nvim"
-  use "lalitmee/browse.nvim"
+  -- use "lalitmee/browse.nvim"
 
   -- Registers
-  use "tversteeg/registers.nvim"
+  -- use "tversteeg/registers.nvim"
 
   -- Icon
   use "kyazdani42/nvim-web-devicons"
@@ -184,7 +184,7 @@ return packer.startup(function(use)
 
   -- File Explorer
   use "kyazdani42/nvim-tree.lua"
-  use "christianchiarulli/lir.nvim"
+  -- use "christianchiarulli/lir.nvim"
 
   -- Comment
   use "numToStr/Comment.nvim"
@@ -224,13 +224,13 @@ return packer.startup(function(use)
 
   -- Editing Support
   use "windwp/nvim-autopairs"
-  use "monaqa/dial.nvim"
-  use "nacro90/numb.nvim"
+  -- use "monaqa/dial.nvim"
+  -- use "nacro90/numb.nvim"
   use "andymass/vim-matchup"
-  use "folke/zen-mode.nvim"
+  -- use "folke/zen-mode.nvim"
   -- use "Pocco81/true-zen.nvim"
   use "karb94/neoscroll.nvim"
-  use "junegunn/vim-slash"
+  -- use "junegunn/vim-slash"
 
   -- Motion
   use "phaazon/hop.nvim"
@@ -258,6 +258,16 @@ return packer.startup(function(use)
   }
   -- Fold
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
+  -- VIM chrome
+  use {
+      'glacambre/firenvim',
+      run = function() vim.fn['firenvim#install'](0) end 
+  }
+
+  -- Jupyter
+  -- use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
+  -- use { 'luk400/vim-jukit' }
 
 
   -- Graveyard

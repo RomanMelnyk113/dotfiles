@@ -51,6 +51,8 @@ local options = {
   -- foldexpr = "nvim_treesitter#foldexpr()",
 
 }
+
+
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 -- vim.opt.fillchars.eob = " "

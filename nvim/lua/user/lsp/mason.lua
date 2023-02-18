@@ -16,7 +16,7 @@ local servers = {
   -- "jdtls",
   "jsonls",
   "solc",
-  "sumneko_lua",
+  "lua_ls",
   "tflint",
   "terraformls",
   "tsserver",
@@ -26,9 +26,9 @@ local servers = {
   "bashls",
   -- "clangd",
   -- "rust_analyzer",
-  "taplo",
-  "zk@v0.10.1",
-  "lemminx"
+  -- "taplo",
+  -- "zk@v0.10.1",
+  -- "lemminx"
 }
 
 local settings = {
@@ -75,13 +75,13 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
   end
 
-  if server == "sumneko_lua" then
+  if server == "lua_ls" then
     local l_status_ok, lua_dev = pcall(require, "lua-dev")
     if not l_status_ok then
       return
     end
-    -- local sumneko_opts = require "user.lsp.settings.sumneko_lua"
-    -- opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+    -- local lua_ls = require "user.lsp.settings.lua_ls"
+    -- opts = vim.tbl_deep_extend("force", lua_ls, opts)
     -- opts = vim.tbl_deep_extend("force", require("lua-dev").setup(), opts)
     local luadev = lua_dev.setup {
       --   -- add any options here, or leave empty to use the default settings
@@ -99,7 +99,7 @@ for _, server in pairs(servers) do
         --   -- settings = opts.settings,
       },
     }
-    lspconfig.sumneko_lua.setup(luadev)
+    lspconfig.lua_ls.setup(luadev)
     goto continue
   end
 
@@ -113,20 +113,20 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", pyright_opts, opts)
   end
 
-  if server == "solc" then
-    local solc_opts = require "user.lsp.settings.solc"
-    opts = vim.tbl_deep_extend("force", solc_opts, opts)
-  end
+  -- if server == "solc" then
+  --   local solc_opts = require "user.lsp.settings.solc"
+  --   opts = vim.tbl_deep_extend("force", solc_opts, opts)
+  -- end
 
   if server == "emmet_ls" then
     local emmet_ls_opts = require "user.lsp.settings.emmet_ls"
     opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
   end
 
-  if server == "zk" then
-    local zk_opts = require "user.lsp.settings.zk"
-    opts = vim.tbl_deep_extend("force", zk_opts, opts)
-  end
+  -- if server == "zk" then
+  --   local zk_opts = require "user.lsp.settings.zk"
+  --   opts = vim.tbl_deep_extend("force", zk_opts, opts)
+  -- end
 
   -- if server == "rust_analyzer" then
   --   local rust_opts = require "user.lsp.settings.rust"
