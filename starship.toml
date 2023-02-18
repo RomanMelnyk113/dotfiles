@@ -4,7 +4,8 @@ style = 'bold blue'
 symbol = '🅰 '
 
 [gcloud]
-disabled = true
+format ='on [$symbol$account(@$domain)(\($project\))]($style) ' 
+disabled = false
 
 [character]
 format = "❯❯ "
