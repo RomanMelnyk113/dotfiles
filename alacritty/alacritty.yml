@@ -15,26 +15,23 @@ window:
 # Feel free to use different font configuration family & face for each sections
 font:
   normal:
-    family: "FiraCode NFM" 
+    family: "FiraCode Nerd Font Mono" 
     # family: "MesloLGS NF" # use it for MacOS
     style: Regular
   bold:
-    family: "FiraCode NFM"
+    family: "FiraCode Nerd Font Mono"
     # family: "MesloLGS NF" # use it for MacOS
     style: Bold
   italic:
-    family: "FiraCode NFM"
+    family: "FiraCode Nerd Font Mono"
     # family: "MesloLGS NF" # use it for MacOS
     style: Italic
-  bold_itali:
-    family: "FiraCode NFM"
+  bold_italic:
+    family: "FiraCode Nerd Font Mono"
     # family: "MesloLGS NF" # use it for MacOS
     style: Italic
 
   size: 16.0
-
-
-  use_thin_strokes: true
 
 selection:
   semantic_escape_chars: ",?`|:\"' ()[]{}<>\t"
