@@ -48,13 +48,20 @@ null_ls.setup {
     formatting.black.with { extra_args = { "--fast" } },
     formatting.stylua,
     formatting.shfmt,
+    formatting.isort,
     formatting.gofmt,
     formatting.goimports,
     formatting.goimports_reviser,
+    formatting.sqlfluff.with({
+        extra_args = { "--dialect", "postgres" }, -- change to your dialect
+    }),
     diagnostics.flake8,
     -- diagnostics.revive,
     -- diagnostics.golangci_lint,
     -- diagnostics.staticcheck,
+    diagnostics.sqlfluff.with({
+        extra_args = { "--dialect", "postgres" }, -- change to your dialect
+    }),
     diagnostics.shellcheck,
     diagnostics.djlint.with { 
       extra_filetypes = { "tpl" }

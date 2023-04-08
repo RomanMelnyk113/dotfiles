@@ -67,7 +67,7 @@ black = "#181a1f",
       style = 'dark',
       colors={
         diff_add = '#587c0c',
-        diff_delete = "#ff3333",
+        diff_delete = "#e46770",
         diff_change = "#2b6f77",
         diff_text = "#2c5372",
       },

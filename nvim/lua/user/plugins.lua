@@ -115,9 +115,13 @@ return packer.startup(function(use)
   use "mickael-menu/zk-nvim"
 
   -- Color
-  use "NvChad/nvim-colorizer.lua"
+  -- use "NvChad/nvim-colorizer.lua"
   -- use "ziontee113/color-picker.nvim"
-  use "nvim-colortils/colortils.nvim"
+  -- use "max397574/colortils.nvim"
+  use {
+    "max397574/colortils.nvim",
+    cmd = "Colortils",
+  }
 
   -- Colorschemes
   use 'navarasu/onedark.nvim'
@@ -172,6 +176,7 @@ return packer.startup(function(use)
   -- Tabline
   -- use "akinsho/bufferline.nvim"
   -- use "tiagovla/scope.nvim"
+  use "NvChad/ui"
 
   -- Statusline
   use "christianchiarulli/lualine.nvim"
@@ -265,6 +270,21 @@ return packer.startup(function(use)
       run = function() vim.fn['firenvim#install'](0) end 
   }
 
+  use {
+    "zbirenbaum/copilot.lua",
+    -- cmd = "Copilot",
+    -- event = "InsertEnter",
+    -- config = function()
+    --   require("copilot").setup({})
+    -- end,
+  }
+  use {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    -- config = function ()
+    --   require("copilot_cmp").setup()
+    -- end
+  }
   -- Jupyter
   -- use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
   -- use { 'luk400/vim-jukit' }

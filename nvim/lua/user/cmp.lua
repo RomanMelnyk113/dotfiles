@@ -13,10 +13,10 @@ if not lspkind_status_ok then
   return
 end
 
-local tabnine_status_ok, _ = pcall(require, "user.tabnine")
-if not tabnine_status_ok then
-  return
-end
+-- local tabnine_status_ok, _ = pcall(require, "user.tabnine")
+-- if not tabnine_status_ok then
+--   return
+-- end
 
 local buffer_fts = {
   "markdown",
@@ -48,21 +48,27 @@ local check_backspace = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
 
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
+end
+
 local icons = require "user.icons"
 
 local kind_icons = icons.kind
 
-vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#CA42F0" })
 vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
 
 vim.g.cmp_active = true
 
 local source_mapping = {
+	copilot = "[Copilot]",
 	buffer = "[Buffer]",
 	nvim_lsp = "[LSP]",
 	nvim_lua = "[Lua]",
-	cmp_tabnine = "[TN]",
 	path = "[Path]",
 }
 
@@ -110,11 +116,18 @@ cmp.setup {
     },
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm { select = false },
+    ["<CR>"] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    },
     ["<Right>"] = cmp.mapping.confirm { select = true },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()
+        if has_words_before() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        else
+          cmp.select_next_item()
+        end
       elseif luasnip.jumpable(1) then
         luasnip.jump(1)
       elseif luasnip.expand_or_jumpable() then
@@ -152,10 +165,10 @@ cmp.setup {
       vim_item.kind = lspkind.symbolic(vim_item.kind, {mode = "symbol"})
 	 		vim_item.menu = source_mapping[entry.source.name]
 
-      if entry.source.name == "cmp_tabnine" then
+      if entry.source.name == "copilot" then
         local detail = (entry.completion_item.data or {}).detail
         -- vim_item.kind = icons.misc.Robot
-        vim_item.kind_hl_group = "CmpItemKindTabnine"
+        vim_item.kind_hl_group = "CmpItemKindCopilot"
         if detail and detail:find('.*%%.*') then
 	 				vim_item.kind = vim_item.kind .. ' ' .. detail
 	 			end
@@ -185,9 +198,9 @@ cmp.setup {
 
       -- NOTE: order matters
       vim_item.menu = ({
+        copilot = "[Copilot]",
         nvim_lsp = "[LSP]",
         nvim_lua = "[Lua]",
-        cmp_tabnine = "[TN]",
         luasnip = "[Snip]",
         buffer = "[Buffer]",
         path = "[Path]",
@@ -204,6 +217,8 @@ cmp.setup {
     end,
   },
   sources = {
+    { name = "copilot", group_index = 2 },
+
     { name = "crates", group_index = 1 },
     {
       name = "nvim_lsp",
@@ -230,7 +245,6 @@ cmp.setup {
         end
       end,
     },
-    { name = "cmp_tabnine", group_index = 2 },
     { name = "path", group_index = 2 },
     { name = "emoji", group_index = 2 },
     { name = "lab.quick_data", keyword_length = 4, group_index = 2 },
