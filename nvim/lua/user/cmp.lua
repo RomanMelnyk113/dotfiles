@@ -116,10 +116,32 @@ cmp.setup {
     },
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
-    },
+    -- ["<CR>"] = cmp.mapping.confirm {
+    --   behavior = cmp.ConfirmBehavior.Replace,
+    --   select = false,
+    -- },
+    ["<CR>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          -- local confirm_opts = vim.deepcopy(cmp.confirm_opts) -- avoid mutating the original opts below
+          local confirm_opts = {}
+          local is_insert_mode = function()
+            return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
+          end
+          if is_insert_mode() then -- prevent overwriting brackets
+            confirm_opts.behavior = cmp.ConfirmBehavior.Insert
+          end
+          local entry = cmp.get_selected_entry()
+          local is_copilot = entry and entry.source.name == "copilot"
+          if is_copilot then
+            confirm_opts.behavior = cmp.ConfirmBehavior.Replace
+            confirm_opts.select = true
+          end
+          if cmp.confirm(confirm_opts) then
+            return -- success, exit early
+          end
+        end
+        fallback() -- if not exited early, always fallback
+      end),
     ["<Right>"] = cmp.mapping.confirm { select = true },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -164,10 +186,9 @@ cmp.setup {
       -- vim_item.kind = kind_icons[vim_item.kind]
       vim_item.kind = lspkind.symbolic(vim_item.kind, {mode = "symbol"})
 	 		vim_item.menu = source_mapping[entry.source.name]
-
       if entry.source.name == "copilot" then
         local detail = (entry.completion_item.data or {}).detail
-        -- vim_item.kind = icons.misc.Robot
+        -- im_item.kind = icons.misc.Robot
         vim_item.kind_hl_group = "CmpItemKindCopilot"
         if detail and detail:find('.*%%.*') then
 	 				vim_item.kind = vim_item.kind .. ' ' .. detail
@@ -217,8 +238,36 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = "copilot", group_index = 2 },
-
+    {
+      name = "copilot",
+      group_index = 2,
+      max_item_count = 3,
+      trigger_characters = {
+        {
+          ".",
+          ":",
+          "(",
+          "'",
+          '"',
+          "[",
+          ",",
+          "#",
+          "*",
+          "@",
+          "|",
+          "=",
+          "-",
+          "{",
+          "/",
+          "\\",
+          "+",
+          "?",
+          " ",
+          -- "\t",
+          -- "\n",
+        },
+      },
+    },
     { name = "crates", group_index = 1 },
     {
       name = "nvim_lsp",
@@ -269,17 +318,18 @@ cmp.setup {
     select = false,
   },
   window = {
-    documentation = false,
-    -- documentation = {
-    --   border = "rounded",
-    --   winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
-    -- },
+    -- documentation = false,
+    documentation = {
+      border = "rounded",
+      winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
+    },
     completion = {
       border = "rounded",
       winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
     },
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = false,
+    native_menu = false,
   },
 }

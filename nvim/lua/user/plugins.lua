@@ -81,7 +81,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-emoji"
   use "hrsh7th/cmp-nvim-lua"
   use "onsails/lspkind.nvim"
-  use { "tzachar/cmp-tabnine", run = "./install.sh" }
+  -- use { "tzachar/cmp-tabnine", run = "./install.sh" }
 
   -- Snippet
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -108,8 +108,9 @@ return packer.startup(function(use)
 
   -- Fuzzy Finder/Telescope
   use "nvim-telescope/telescope.nvim"
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- use "nvim-telescope/telescope-media-files.nvim"
-  use "tom-anders/telescope-vim-bookmarks.nvim"
+  -- use "tom-anders/telescope-vim-bookmarks.nvim"
 
   -- Note Taking
   use "mickael-menu/zk-nvim"

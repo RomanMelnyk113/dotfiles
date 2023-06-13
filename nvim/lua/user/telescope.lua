@@ -23,9 +23,9 @@ telescope.setup {
       "%.sqlite3",
       "%.ipynb",
       "node_modules/*",
-      -- "%.jpg",
-      -- "%.jpeg",
-      -- "%.png",
+      "%.jpg",
+      "%.jpeg",
+      "%.png",
       "%.svg",
       "%.otf",
       "%.ttf",
@@ -65,6 +65,9 @@ telescope.setup {
       "%.epub",
       "%.flac",
       "%.tar.gz",
+      "%.json",
+      "%.sql",
+      "%.sum",
     },
 
     mappings = {
@@ -197,6 +200,13 @@ telescope.setup {
     -- builtin picker
   },
   extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
     -- media_files = {
     --   -- filetypes whitelist
     --   -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
@@ -205,3 +215,5 @@ telescope.setup {
     -- },
   },
 }
+
+-- require('telescope').load_extension('fzf')
