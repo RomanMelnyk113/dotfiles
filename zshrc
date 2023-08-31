@@ -125,6 +125,7 @@ alias k=kubectl
 alias kx=kubectx
 alias python=python3
 alias lg=lazygit
+# alias go="go1.20.5"
 complete -F __start_kubectl k
 
 # enable VI mode
@@ -187,3 +188,5 @@ eval "$(starship init zsh)"
 
 
 eval "$(atuin init zsh)"
+
+[[ -s "/Users/roman/.gvm/scripts/gvm" ]] && source "/Users/roman/.gvm/scripts/gvm"

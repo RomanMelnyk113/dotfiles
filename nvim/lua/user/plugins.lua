@@ -210,13 +210,6 @@ return packer.startup(function(use)
   -- Quickfix
   use "kevinhwang91/nvim-bqf"
 
-  -- Code Runner
-  use "is0n/jaq-nvim"
-  use {
-    "0x100101/lab.nvim",
-    run = "cd js && npm ci",
-  }
-
   -- Git
   use "lewis6991/gitsigns.nvim"
   use "f-person/git-blame.nvim"
@@ -271,21 +264,6 @@ return packer.startup(function(use)
       run = function() vim.fn['firenvim#install'](0) end 
   }
 
-  use {
-    "zbirenbaum/copilot.lua",
-    -- cmd = "Copilot",
-    -- event = "InsertEnter",
-    -- config = function()
-    --   require("copilot").setup({})
-    -- end,
-  }
-  use {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    -- config = function ()
-    --   require("copilot_cmp").setup()
-    -- end
-  }
   -- Jupyter
   -- use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
   -- use { 'luk400/vim-jukit' }

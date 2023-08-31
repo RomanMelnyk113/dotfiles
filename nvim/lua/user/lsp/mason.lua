@@ -9,21 +9,21 @@ if not status_ok_1 then
 end
 
 local servers = {
-  "cssls",
-  "cssmodules_ls",
-  "emmet_ls",
-  "html",
+  -- "cssls",
+  -- "cssmodules_ls",
+  -- "emmet_ls",
+  -- "html",
   -- "jdtls",
   "jsonls",
-  "solc",
-  "lua_ls",
-  "tflint",
-  "terraformls",
+  -- "solc",
+  -- "lua_ls",
+  -- "tflint",
+  -- "terraformls",
   "tsserver",
   "pyright",
   "gopls",
-  "yamlls",
-  "bashls",
+  -- "yamlls",
+  -- "bashls",
   -- "clangd",
   -- "rust_analyzer",
   -- "taplo",
@@ -47,8 +47,7 @@ local settings = {
 mason.setup(settings)
 mason_lspconfig.setup {
   ensure_installed = servers,
-  automatic_installation = true,
-}
+  automatic_installation = true, }
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
