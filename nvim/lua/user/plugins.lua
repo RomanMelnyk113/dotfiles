@@ -116,7 +116,7 @@ return packer.startup(function(use)
   use "mickael-menu/zk-nvim"
 
   -- Color
-  -- use "NvChad/nvim-colorizer.lua"
+  use "norcalli/nvim-colorizer.lua"
   -- use "ziontee113/color-picker.nvim"
   -- use "max397574/colortils.nvim"
   use {
@@ -189,7 +189,7 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
 
   -- File Explorer
-  use "kyazdani42/nvim-tree.lua"
+  use "nvim-tree/nvim-tree.lua"
   -- use "christianchiarulli/lir.nvim"
 
   -- Comment

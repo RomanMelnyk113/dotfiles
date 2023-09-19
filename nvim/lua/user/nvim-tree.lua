@@ -3,14 +3,14 @@ if not status_ok then
   return
 end
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-  return
-end
+-- local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
+-- if not config_status_ok then
+--   return ""
+-- end
 
 local icons = require "user.icons"
 
-local tree_cb = nvim_tree_config.nvim_tree_callback
+-- local tree_cb = nvim_tree_config.nvim_tree_callback
 
 local utils = require "nvim-tree.utils"
 
@@ -23,10 +23,10 @@ local function notify_level(level)
   end
 end
 
---utils.notify.warn = notify_level(vim.log.levels.WARN)
---utils.notify.error = notify_level(vim.log.levels.ERROR)
---utils.notify.info = notify_level(vim.log.levels.INFO)
---utils.notify.debug = notify_level(vim.log.levels.DEBUG)
+-- utils.notify.warn = notify_level(vim.log.levels.WARN)
+-- utils.notify.error = notify_level(vim.log.levels.ERROR)
+-- utils.notify.info = notify_level(vim.log.levels.INFO)
+-- utils.notify.debug = notify_level(vim.log.levels.DEBUG)
 
 nvim_tree.setup {
   hijack_directories = {
@@ -145,11 +145,11 @@ nvim_tree.setup {
     -- auto_resize = true,
     mappings = {
       custom_only = false,
-      list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
-        { key = "v", cb = tree_cb "vsplit" },
-      },
+      -- list = {
+      --   { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+      --   { key = "h", cb = tree_cb "close_node" },
+      --   { key = "v", cb = tree_cb "vsplit" },
+      -- },
     },
     number = false,
     relativenumber = false,
