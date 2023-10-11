@@ -84,27 +84,18 @@ return packer.startup(function(use)
   -- use { "tzachar/cmp-tabnine", run = "./install.sh" }
 
   -- Snippet
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  -- use "L3MON4D3/LuaSnip" --snippet engine
+  -- use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- Syntax/Treesitter
   use 'nvim-treesitter/nvim-treesitter'
   use "JoosepAlviste/nvim-ts-context-commentstring"
-  -- use "p00f/nvim-ts-rainbow"
-  -- use "nvim-treesitter/playground"
-  -- use "windwp/nvim-ts-autotag"
   use "nvim-treesitter/nvim-treesitter-textobjects"
-  -- use "wellle/targets.vim"
-  -- use "RRethy/nvim-treesitter-textsubjects"
   use "kylechui/nvim-surround"
-  -- use {
-  --   "abecodes/tabout.nvim",
-  --   wants = { "nvim-treesitter" }, -- or require if not used so far
-  -- }
 
   -- Marks
-  use "christianchiarulli/harpoon"
-  use "MattesGroeger/vim-bookmarks"
+  -- use "christianchiarulli/harpoon"
+  -- use "MattesGroeger/vim-bookmarks"
 
   -- Fuzzy Finder/Telescope
   use "nvim-telescope/telescope.nvim"
@@ -113,7 +104,7 @@ return packer.startup(function(use)
   -- use "tom-anders/telescope-vim-bookmarks.nvim"
 
   -- Note Taking
-  use "mickael-menu/zk-nvim"
+  -- use "mickael-menu/zk-nvim"
 
   -- Color
   use "norcalli/nvim-colorizer.lua"
@@ -135,9 +126,9 @@ return packer.startup(function(use)
   -- Utility
   use "rcarriga/nvim-notify"
   use "stevearc/dressing.nvim"
-  use "ghillb/cybu.nvim"
-  use "moll/vim-bbye"
-  use "lewis6991/impatient.nvim"
+  -- use "ghillb/cybu.nvim"
+  -- use "moll/vim-bbye"
+  -- use "lewis6991/impatient.nvim"
   -- use "lalitmee/browse.nvim"
 
   -- Registers
@@ -177,7 +168,7 @@ return packer.startup(function(use)
   -- Tabline
   -- use "akinsho/bufferline.nvim"
   -- use "tiagovla/scope.nvim"
-  use "NvChad/ui"
+  -- use "NvChad/ui"
 
   -- Statusline
   use "christianchiarulli/lualine.nvim"
@@ -186,7 +177,7 @@ return packer.startup(function(use)
   use "goolord/alpha-nvim"
 
   -- Indent
-  use "lukas-reineke/indent-blankline.nvim"
+  use {"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}}
 
   -- File Explorer
   use "nvim-tree/nvim-tree.lua"
@@ -208,14 +199,14 @@ return packer.startup(function(use)
   -- use "rmagatti/session-lens"
 
   -- Quickfix
-  use "kevinhwang91/nvim-bqf"
+  -- use "kevinhwang91/nvim-bqf"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
   use "f-person/git-blame.nvim"
   use "ruifm/gitlinker.nvim"
-  use "mattn/vim-gist"
-  use "mattn/webapi-vim"
+  -- use "mattn/vim-gist"
+  -- use "mattn/webapi-vim"
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- Github
@@ -242,10 +233,6 @@ return packer.startup(function(use)
   use 'ray-x/go.nvim'
   use 'ray-x/guihua.lua' -- recommanded if need floating window support
 
-  -- Rust
-  use { "christianchiarulli/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" }
-  use "Saecki/crates.nvim"
-
   -- Typescript TODO: set this up, also add keybinds to ftplugin
   use "jose-elias-alvarez/typescript.nvim"
 
@@ -263,6 +250,8 @@ return packer.startup(function(use)
       'glacambre/firenvim',
       run = function() vim.fn['firenvim#install'](0) end 
   }
+
+  use("nathom/filetype.nvim")
 
   -- Jupyter
   -- use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
