@@ -59,30 +59,98 @@ local plugins = {
     end,
   },
 
-  -- {
-  --   "ChristianChiarulli/neovim-codicons",
-  --   dependencies = { "mortepau/codicons.nvim" },
-  --   lazy = false,
-  --   config = function()
-  --     require "custom.configs.icons"
-  --   end,
-  -- },
+  {
+    "ChristianChiarulli/neovim-codicons",
+    dependencies = { "mortepau/codicons.nvim" },
+    lazy = false,
+    config = function()
+      require "custom.configs.icons"
+    end,
+  },
 
   {
     "simrat39/symbols-outline.nvim",
-    cmd = "SymbolOutline",
+    cmd = "SymbolsOutline",
     config = function()
       require "custom.configs.symbol-outline"
     end,
   },
 
+  -- {
+  --   "kevinhwang91/nvim-ufo",
+  --   lazy = false,
+  --   dependencies = { "kevinhwang91/promise-async" },
+  --   config = function()
+  --     require "custom.configs.ufo"
+  --   end,
+  -- },
+
   {
-    "kevinhwang91/nvim-ufo",
-    dependencies = { "kevinhwang91/promise-async" },
+    "linrongbin16/gitlinker.nvim",
     config = function()
-      require "custom.configs.ufo"
+      require("gitlinker").setup()
     end,
   },
+  {
+    "princejoogie/dir-telescope.nvim",
+    -- telescope.nvim is a required dependency
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("dir-telescope").setup {
+        -- these are the default options set
+        hidden = true,
+        no_ignore = false,
+        show_preview = true,
+      }
+    end,
+  },
+
+  -- Testing
+  {
+    "nvim-neotest/neotest",
+    config = function()
+      require "custom.configs.neotest"
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/neotest-go",
+      "nvim-neotest/neotest-plenary",
+      "nvim-neotest/neotest-vim-test",
+      "nvim-neotest/neotest-python",
+      "folke/neodev.nvim",
+    },
+  },
+  -- DAP
+  {
+    "leoluz/nvim-dap-go",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    config = function()
+      require "custom.configs.dap"
+    end,
+  },
+
+  -- GOlang
+  {
+    "ray-x/go.nvim",
+    dependencies = { -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require "custom.configs.go"
+    end,
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+  },
+  -- { "mfussenegger/nvim-dap-python" },
 
   -- To make a plugin not be loaded
   -- {
