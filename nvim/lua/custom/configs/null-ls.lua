@@ -25,14 +25,14 @@ null_ls.setup {
     formatting.goimports,
     formatting.goimports_reviser,
     formatting.sqlfluff.with({
-        extra_args = { "--dialect", "postgres" }, -- change to your dialect
+        extra_args = { "--dialect", "clickhouse" }, -- change to your dialect
     }),
     diagnostics.flake8,
     -- diagnostics.revive,
     -- diagnostics.golangci_lint,
     -- diagnostics.staticcheck,
     diagnostics.sqlfluff.with({
-        extra_args = { "--dialect", "postgres" }, -- change to your dialect
+        extra_args = { "--dialect", "clickhouse" }, -- change to your dialect
     }),
     diagnostics.shellcheck,
     diagnostics.djlint.with { 

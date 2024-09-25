@@ -4,18 +4,20 @@ local M = {}
 M.general = {
   n = {
     ["gr"] = { "<cmd>Telescope lsp_references<CR>", "LSP references" },
+    ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "LSP definitions" },
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
     ["<C-p>"] = { "<cmd>Telescope projects<CR>", "Toggle telescope projects", opts = { nowait = true } },
     ["<C-m>"] = { "<cmd>SymbolsOutline<CR>", "Toggle symbol outline", opts = { nowait = true } },
     ["<leader>fg"] = { "<cmd>Telescope dir live_grep<CR>", "Find in folder", opts = { nowait = true } },
 
     --  format with conform
-    ["<leader>fm"] = {
-      function()
-        require("conform").format()
-      end,
-      "formatting",
-    },
+    -- ["<leader>fm"] = {
+    --   function()
+    --     require("conform").format()
+    --   end,
+    --   "formatting",
+    -- },
+    ["<leader>fm"] = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
   },
   v = {
     [">"] = { ">gv", "indent" },

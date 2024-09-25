@@ -36,16 +36,17 @@ local plugins = {
     end,
   },
 
-  {
-    "stevearc/conform.nvim",
-    --  for users those who want auto-save conform + lazyloading!
-    -- event = "BufWritePre"
-    config = function()
-      require "custom.configs.conform"
-    end,
-  },
+  -- {
+  --   "stevearc/conform.nvim",
+  --   --  for users those who want auto-save conform + lazyloading!
+  --   -- event = "BufWritePre"
+  --   config = function()
+  --     require "custom.configs.conform"
+  --   end,
+  -- },
   {
     "ahmedkhalf/project.nvim",
+    lazy = false,
     config = function()
       require "custom.configs.project"
     end,
@@ -112,8 +113,8 @@ local plugins = {
       require "custom.configs.neotest"
     end,
     dependencies = {
-      "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
+      "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-neotest/neotest-go",
       "nvim-neotest/neotest-plenary",
@@ -149,6 +150,21 @@ local plugins = {
     event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require "custom.configs.diffview"
+    end,
+  },
+  {
+    "andythigpen/nvim-coverage",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require "custom.configs.coverage"
+    end,
   },
   -- { "mfussenegger/nvim-dap-python" },
 

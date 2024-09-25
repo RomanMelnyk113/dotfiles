@@ -14,3 +14,8 @@ vim.opt.scrolloff = 20 -- is one of my fav
 vim.opt.sidescrolloff = 8
 vim.opt.relativenumber = true
 vim.opt.swapfile = false -- creates a swapfile
+
+vim.opt.foldenable = true
+vim.opt.foldlevelstart = -1
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "indent"

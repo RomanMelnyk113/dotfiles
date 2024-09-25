@@ -1,3 +1,8 @@
+local is_ok, conform = pcall(require, "conform")
+if not is_ok then
+  return
+end
+
 local options = {
 	lsp_fallback = true,
 
@@ -9,6 +14,8 @@ local options = {
 		html = { "prettier" },
 
 		sh = { "shfmt" },
+		go = { "goimports", "gofmt" },
+		python = { "black" },
 	},
 
   -- adding same formatter for multiple filetypes can look too much work for some
@@ -21,4 +28,4 @@ local options = {
 	-- },
 }
 
-require("conform").setup(options)
+conform.setup(options)
