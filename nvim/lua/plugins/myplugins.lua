@@ -1,4 +1,4 @@
-local overrides = require "custom.configs.overrides"
+local overrides = require "configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -22,8 +22,8 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require('nvchad.configs.lspconfig').defaults()
+      require "configs.lspconfig"
     end,
   },
 
@@ -36,19 +36,19 @@ local plugins = {
     end,
   },
 
-  -- {
-  --   "stevearc/conform.nvim",
-  --   --  for users those who want auto-save conform + lazyloading!
-  --   -- event = "BufWritePre"
-  --   config = function()
-  --     require "custom.configs.conform"
-  --   end,
-  -- },
+  {
+    "stevearc/conform.nvim",
+    --  for users those who want auto-save conform + lazyloading!
+    -- event = "BufWritePre"
+    config = function()
+      require "configs.conform"
+    end,
+  },
   {
     "ahmedkhalf/project.nvim",
     lazy = false,
     config = function()
-      require "custom.configs.project"
+      require "configs.project"
     end,
   },
 
@@ -56,7 +56,7 @@ local plugins = {
     "nvimtools/none-ls.nvim",
     lazy = false,
     config = function()
-      require "custom.configs.null-ls"
+      require "configs.null-ls"
     end,
   },
 
@@ -65,7 +65,7 @@ local plugins = {
     dependencies = { "mortepau/codicons.nvim" },
     lazy = false,
     config = function()
-      require "custom.configs.icons"
+      require "configs.icons"
     end,
   },
 
@@ -73,7 +73,7 @@ local plugins = {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
     config = function()
-      require "custom.configs.symbol-outline"
+      require "configs.symbol-outline"
     end,
   },
 
@@ -82,7 +82,7 @@ local plugins = {
   --   lazy = false,
   --   dependencies = { "kevinhwang91/promise-async" },
   --   config = function()
-  --     require "custom.configs.ufo"
+  --     require "configs.ufo"
   --   end,
   -- },
 
@@ -110,12 +110,13 @@ local plugins = {
   {
     "nvim-neotest/neotest",
     config = function()
-      require "custom.configs.neotest"
+      require("configs.neotest")
     end,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/nvim-nio",
       "nvim-neotest/neotest-go",
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-vim-test",
@@ -132,7 +133,7 @@ local plugins = {
       "theHamsta/nvim-dap-virtual-text",
     },
     config = function()
-      require "custom.configs.dap"
+      require "configs.dap"
     end,
   },
 
@@ -145,7 +146,7 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-      require "custom.configs.go"
+      require "configs.go"
     end,
     event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
@@ -156,14 +157,14 @@ local plugins = {
     "sindrets/diffview.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require "custom.configs.diffview"
+      require "configs.diffview"
     end,
   },
   {
     "andythigpen/nvim-coverage",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require "custom.configs.coverage"
+      require "configs.coverage"
     end,
   },
   -- { "mfussenegger/nvim-dap-python" },

@@ -1,10 +1,13 @@
+require "nvchad.mappings"
+---
 ---@type MappingsTable
-local M = {}
+local M = {};
+local map = vim.keymap.set
 
 M.general = {
   n = {
-    ["gr"] = { "<cmd>Telescope lsp_references<CR>", "LSP references" },
-    ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "LSP definitions" },
+    ["<leader>gr"] = { "<cmd>Telescope lsp_references<CR>", "LSP references" },
+    ["<leader>gd"] = { "<cmd>Telescope lsp_definitions<CR>", "LSP definitions" },
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
     ["<C-p>"] = { "<cmd>Telescope projects<CR>", "Toggle telescope projects", opts = { nowait = true } },
     ["<C-m>"] = { "<cmd>SymbolsOutline<CR>", "Toggle symbol outline", opts = { nowait = true } },
@@ -79,6 +82,10 @@ M.neotest = {
   },
 }
 
--- more keybinds!
-
-return M
+for name, maps in pairs(M) do
+  for mode, data in pairs(maps) do
+    for key, val in pairs(data) do
+      map(mode, key, val[1], { desc = val[2], remap=false })
+    end
+  end
+end
