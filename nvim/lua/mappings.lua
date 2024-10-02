@@ -20,6 +20,7 @@ M.general = {
     --   end,
     --   "formatting",
     -- },
+    ["<leader>lf"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open float window" },
     ["<leader>fm"] = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
   },
   v = {
