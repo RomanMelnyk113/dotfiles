@@ -19,3 +19,6 @@ vim.opt.foldenable = true
 vim.opt.foldlevelstart = -1
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "indent"
+
+-- disable logging, enable it back if needed for debbuging
+vim.lsp.set_log_level("off")
