@@ -24,7 +24,8 @@ neotest.setup({
       -- experimental = {
       --   test_table = true,
       -- },
-      args = { "-count=1", "-race", "-timeout=60s", "-coverprofile=coverage.out" }
+      args = { "-count=1", "-timeout=60s", "-coverprofile=coverage.out" }
+      -- args = { "-count=1", "-race", "-timeout=60s", "-coverprofile=coverage.out" }
       -- args = { "-count=1", "-timeout=60s" }
     }),
     require("neotest-vim-test")({
