@@ -22,6 +22,9 @@
     ~/.config/alacritty: 
       glob: true
       path: alacritty/* 
+    ~/.config/ghostty/: 
+      glob: true
+      path: ghostty/* 
 
 - create:
   - ~/Sources
