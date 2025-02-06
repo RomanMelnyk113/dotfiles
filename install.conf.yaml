@@ -6,12 +6,12 @@
 - clean: ['~', '~/.vim', '~/.config']
 
 - link:
-    ~/.bashrc: bashrc
+    # ~/.bashrc: bashrc
     ~/.zshrc: zshrc
-    ~/.tmux.conf: tmux.conf
+    # ~/.tmux.conf: tmux.conf
     ~/.gitconfig: gitconfig
-    ~/.bash_aliases: bash_aliases
-    ~/.config/karabiner/karabiner.json: karabiner.json
+    # ~/.bash_aliases: bash_aliases
+    # ~/.config/karabiner/karabiner.json: karabiner.json
     ~/.config/starship.toml: starship.toml
     ~/.config/pgcli: 
       glob: true
@@ -19,12 +19,15 @@
     ~/.config/nvim: 
       glob: true
       path: nvim/* 
-    ~/.config/alacritty: 
-      glob: true
-      path: alacritty/* 
+    # ~/.config/alacritty: 
+    #   glob: true
+    #   path: alacritty/* 
     ~/.config/ghostty/: 
       glob: true
       path: ghostty/* 
+    ~/.config/atuin/: 
+      glob: true
+      path: atuin/* 
 
 - create:
   - ~/Sources

@@ -1,16 +1,16 @@
-local status_ok, codicons = pcall(require, "codicons")
-if not status_ok then
-	return
-end
+-- local status_ok, codicons = pcall(require, "codicons")
+-- if not status_ok then
+-- 	return
+-- end
 
 
-codicons.setup({
-  -- Override by mapping name to icon
-  ['account'] = '',
-  -- Or by name to hexadecimal/decimal value
-  ['comment'] = 0xEA6B, -- hexadecimal
-  ['archive'] = 60056, -- decimal
-})
+-- codicons.setup({
+--   -- Override by mapping name to icon
+--   ['account'] = '',
+--   -- Or by name to hexadecimal/decimal value
+--   ['comment'] = 0xEA6B, -- hexadecimal
+--   ['archive'] = 60056, -- decimal
+-- })
 
 -- https://github.com/microsoft/vscode/blob/main/src/vs/base/common/codicons.ts
 -- go to the above and then enter <c-v>u<unicode> and the symbold should appear
