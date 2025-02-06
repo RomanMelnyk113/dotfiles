@@ -22,7 +22,6 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require('nvchad.configs.lspconfig').defaults()
       require "configs.lspconfig"
     end,
   },
@@ -61,31 +60,12 @@ local plugins = {
   },
 
   {
-    "ChristianChiarulli/neovim-codicons",
-    dependencies = { "mortepau/codicons.nvim" },
-    lazy = false,
-    config = function()
-      require "configs.icons"
-    end,
-  },
-
-  {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
     config = function()
       require "configs.symbol-outline"
     end,
   },
-
-  -- {
-  --   "kevinhwang91/nvim-ufo",
-  --   lazy = false,
-  --   dependencies = { "kevinhwang91/promise-async" },
-  --   config = function()
-  --     require "configs.ufo"
-  --   end,
-  -- },
-
   {
     "linrongbin16/gitlinker.nvim",
     config = function()
@@ -168,16 +148,28 @@ local plugins = {
     end,
   },
   {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      table.insert(opts.sources, { name = "codeium" })
+      table.insert(opts.sources, { name = "vim-dadbod-completion" })
+    end,
+  },
+  {
     'Exafunction/codeium.vim',
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
     event = 'BufEnter',
     config = function()
       -- Change '<C-g>' here to any keycode you like.
-      vim.keymap.set('i', '<C-l>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+      vim.keymap.set('i', 'll', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true, noremap = true})
       vim.keymap.set('i', '<C-]>', function() return vim.fn['codeium#CycleCompletions'](1) end,
         { expr = true, silent = true })
       vim.keymap.set('i', '<C-[>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
         { expr = true, silent = true })
       vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+      -- require("codeium").setup({})
     end
   },
   {
@@ -196,7 +188,20 @@ local plugins = {
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
     end,
-  }
+  },
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   opts = {
+  --     sources = {
+  --       { name = "codeium" },
+  --       { name = "vim-dadbod-completion" },
+  --       { name = "gopls" },
+  --     },
+  --     -- mapping = {
+  --     --   ["<C-Space>"] = require "nvchad.configs.cmp".mapping.complete(), -- Replace with whatever you want
+  --     -- },
+  --   },
+  -- },
   -- { "mfussenegger/nvim-dap-python" },
 
   -- To make a plugin not be loaded

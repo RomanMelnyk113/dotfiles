@@ -27,14 +27,14 @@ null_ls.setup {
     formatting.sqlfluff.with({
         extra_args = { "--dialect", "clickhouse" }, -- change to your dialect
     }),
-    diagnostics.flake8,
+    -- diagnostics.flake8,
     -- diagnostics.revive,
     -- diagnostics.golangci_lint,
     -- diagnostics.staticcheck,
     diagnostics.sqlfluff.with({
         extra_args = { "--dialect", "clickhouse" }, -- change to your dialect
     }),
-    diagnostics.shellcheck,
+    --diagnostics.shellcheck,
     diagnostics.djlint.with { 
       extra_filetypes = { "tpl" }
     },
