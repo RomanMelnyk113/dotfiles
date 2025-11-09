@@ -8,6 +8,7 @@ M.general = {
   n = {
     ["<leader>gr"] = { "<cmd>Telescope lsp_references<CR>", "LSP references" },
     ["<leader>gd"] = { "<cmd>Telescope lsp_definitions<CR>", "LSP definitions" },
+    ["<leader>gb"] = { "<cmd>Gitsigns blame<CR>", "Git blame" },
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
     ["<C-p>"] = { "<cmd>Telescope projects<CR>", "Toggle telescope projects", opts = { nowait = true } },
     ["<C-m>"] = { "<cmd>SymbolsOutline<CR>", "Toggle symbol outline", opts = { nowait = true } },
@@ -37,9 +38,18 @@ M.dap = {
     ["<leader>dO"] = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
     -- r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
     ["<leader>dl"] = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
-    ["<leader>dt"] = { "<cmd>lua require'dap-go'.debug_test()<cr>", "Test" },
+    -- ["<leader>dt"] = { "<cmd>lua require'dap-go'.debug_test()<cr>", "Test" },
+    ["<leader>dt"] = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Test" },
     -- u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
     -- x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+    ["<leader>dW"] = {
+      "<cmd>lua require('dapui').elements.watches.add(vim.fn.input('[Watch Expression] > '))<CR>",
+      "Add to DAP Watches"
+    },
+    ["<leader>dw"] = {
+      "<cmd>lua require('dapui').elements.watches.add(vim.fn.expand('<cword>'))<CR>",
+      "Add word under cursor to DAP Watches"
+    },
 
     ["<leader>dR"] = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
     ["<leader>dE"] = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
@@ -86,7 +96,7 @@ M.neotest = {
 for name, maps in pairs(M) do
   for mode, data in pairs(maps) do
     for key, val in pairs(data) do
-      map(mode, key, val[1], { desc = val[2], remap=false })
+      map(mode, key, val[1], { desc = val[2], remap = false })
     end
   end
 end

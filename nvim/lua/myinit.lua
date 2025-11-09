@@ -22,3 +22,12 @@ vim.opt.foldmethod = "indent"
 
 -- disable logging, enable it back if needed for debbuging
 vim.lsp.set_log_level("off")
+
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+
+vim.g.codeium_os = 'Darwin'
+vim.g.codeium_arch = 'arm64'
+
+-- vim.g.python_host_prog = '/Users/romanmelnyk/.venvs/nvim/bin/python3'
+-- vim.g.python3_host_prog = '/Users/romanmelnyk/.venvs/nvim/bin/python3'
