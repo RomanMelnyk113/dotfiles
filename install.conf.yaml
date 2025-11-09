@@ -8,6 +8,7 @@
 - link:
     # ~/.bashrc: bashrc
     ~/.zshrc: zshrc
+    ~/.netrc: netrc
     # ~/.tmux.conf: tmux.conf
     ~/.gitconfig: gitconfig
     # ~/.bash_aliases: bash_aliases
@@ -28,6 +29,9 @@
     ~/.config/atuin/: 
       glob: true
       path: atuin/* 
+    ~/.config/fish/: 
+      glob: true
+      path: fish/* 
 
 - create:
   - ~/Sources

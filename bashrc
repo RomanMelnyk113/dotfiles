@@ -1,5 +1,5 @@
 # Path to your oh-my-bash installation.
-export OSH=/home/roman/.oh-my-bash
+# export OSH=/home/roman/.oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
@@ -110,3 +110,7 @@ export PATH="/Users/roman/.rd/bin:$PATH"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
+
+. "$HOME/.atuin/bin/env"
+
+. "$HOME/.local/bin/env"

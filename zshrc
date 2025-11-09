@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+#export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -92,7 +92,7 @@ plugins=(
     zsh-autosuggestions
 )
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 EDITOR='nvim'
 
 # User configuration
@@ -125,8 +125,9 @@ alias k=kubectl
 alias kx=kubectx
 alias python=python3
 alias lg=lazygit
+alias g=git
 # alias go="go1.20.5"
-complete -F __start_kubectl k
+#complete -F __start_kubectl k
 
 # enable VI mode
 bindkey -v
@@ -145,11 +146,6 @@ export GOPATH=$HOME/.go
 # GCP config
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/roman/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/roman/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/roman/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/roman/google-cloud-sdk/completion.zsh.inc'; fi
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -179,14 +175,17 @@ PROMPT='$(kube_ps1)'$PROMPT
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/roman/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
 eval "$(starship init zsh)"
 
+. "$HOME/.atuin/bin/env"
 
+[[ -s "/Users/romanmelnyk/.gvm/scripts/gvm" ]] && source "/Users/romanmelnyk/.gvm/scripts/gvm"
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/romanmelnyk/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/romanmelnyk/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/romanmelnyk/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/romanmelnyk/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 eval "$(atuin init zsh)"
 
-[[ -s "/Users/roman/.gvm/scripts/gvm" ]] && source "/Users/roman/.gvm/scripts/gvm"
+. "$HOME/.local/bin/env"
