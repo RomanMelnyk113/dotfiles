@@ -30,8 +30,9 @@ selection-invert-fg-bg = true
 
 cursor-style = "bar"
 cursor-style-blink = true
-scrollback-limit = 100000
+scrollback-limit = 1000000
 window-padding-x = 20
 window-padding-y = 2,10
 window-save-state = "always"
 fullscreen = true
+keybind = shift+enter=text:\x1b\r
