@@ -39,12 +39,16 @@ local plugins = {
     --  for users those who want auto-save conform + lazyloading!
     -- event = "BufWritePre"
     config = function()
-      require "configs.conform"
+      local status_ok, conform = pcall(require, "conform")
+      if not status_ok then
+        return
+      end
+      conform.setup(require "configs.conform")
     end,
   },
   {
     "ahmedkhalf/project.nvim",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       require "configs.project"
     end,
@@ -52,7 +56,7 @@ local plugins = {
 
   {
     "nvimtools/none-ls.nvim",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require "configs.null-ls"
     end,
@@ -68,7 +72,11 @@ local plugins = {
   {
     "linrongbin16/gitlinker.nvim",
     config = function()
-      require("gitlinker").setup()
+      local status_ok, gitlinker = pcall(require, "gitlinker")
+      if not status_ok then
+        return
+      end
+      gitlinker.setup()
     end,
   },
   {
@@ -85,10 +93,17 @@ local plugins = {
     end,
   },
   {
-    "echasnlovski/mini.pick",
-    lazy = false,
+    "nvim-mini/mini.pick",
+    cmd = "Pick",
+    keys = {
+      { "<leader>fp", "<cmd>Pick files<cr>", desc = "Pick files" },
+    },
     config = function()
-      require('mini.pick').setup()
+      local status_ok, mini_pick = pcall(require, "mini.pick")
+      if not status_ok then
+        return
+      end
+      mini_pick.setup()
     end,
   },
 
@@ -120,6 +135,32 @@ local plugins = {
     },
     config = function()
       require "configs.dap"
+    end,
+  },
+
+  -- Python venv selector
+  {
+    "linux-cultist/venv-selector.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "nvim-telescope/telescope.nvim",
+      "mfussenegger/nvim-dap-python",
+    },
+    branch = "regexp",
+    ft = "python",
+    cmd = "VenvSelect",
+    keys = {
+      { "<leader>vs", "<cmd>VenvSelect<cr>", desc = "Select VirtualEnv" },
+      { "<leader>vc", "<cmd>VenvSelectCached<cr>", desc = "Select Cached VirtualEnv" },
+    },
+    config = function()
+      local status_ok, venv_selector = pcall(require, "venv-selector")
+      if not status_ok then
+        return
+      end
+      venv_selector.setup({
+        auto_refresh = true,
+      })
     end,
   },
 
@@ -155,7 +196,7 @@ local plugins = {
   },
   {
     "hrsh7th/nvim-cmp",
-    lazy = false,
+    event = "InsertEnter",
     opts = function(_, opts)
       table.insert(opts.sources, { name = "windsurf" })
       table.insert(opts.sources, { name = "vim-dadbod-completion" })
@@ -197,84 +238,6 @@ local plugins = {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
-  -- {
-  --   "yetone/avante.nvim",
-  --   event = "VeryLazy",
-  --   version = false, -- Never set this value to "*"! Never!
-  --   opts = {
-  --     -- add any opts here
-  --     -- for example
-  --     provider = "openai",
-  --
-  --     openai = {
-  --       endpoint = "https://api.openai.com/v1",
-  --       model = "gpt-4o-mini",             -- your desired model (or use gpt-4o, etc.)
-  --       -- timeout = 30000,              -- Timeout in milliseconds, increase this for reasoning models
-  --       -- temperature = 0,
-  --       -- max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-  --       --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-  --     },
-  --     claude = {
-  --       endpoint = "https://api.anthropic.com",
-  --       model = "claude-3-5-sonnet-20241022",
-  --       temperature = 0,
-  --       max_tokens = 4096,
-  --     },
-  --     file_selector = {
-  --       provider = "mini.pick", -- or "telescope"
-  --     },
-  --   },
-  --   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  --   build = "make",
-  --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-  --   dependencies = {
-  --     "nvim-treesitter/nvim-treesitter",
-  --     "stevearc/dressing.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "MunifTanjim/nui.nvim",
-  --     --- The below dependencies are optional,
-  --     "echasnlovski/mini.pick",      -- for file_selector provider mini.pick
-  --     -- "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-  --     "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
-  --     -- "ibhagwan/fzf-lua",            -- for file_selector provider fzf
-  --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-  --     "zbirenbaum/copilot.lua",      -- for providers='copilot'
-  --     {
-  --       -- support for image pasting
-  --       "HakonHarnes/img-clip.nvim",
-  --       event = "VeryLazy",
-  --       opts = {
-  --         -- recommended settings
-  --         default = {
-  --           embed_image_as_base64 = false,
-  --           prompt_for_file_name = false,
-  --           drag_and_drop = {
-  --             insert_mode = true,
-  --           },
-  --           -- required for Windows users
-  --           use_absolute_path = true,
-  --         },
-  --       },
-  --     },
-  --     {
-  --       -- Make sure to set this up properly if you have lazy=true
-  --       'MeanderingProgrammer/render-markdown.nvim',
-  --       opts = {
-  --         file_types = { "markdown", "Avante" },
-  --       },
-  --       ft = { "markdown", "Avante" },
-  --     },
-  --   },
-  -- }
-  -- {
-  --   'pieces-app/plugin_neo_vim',
-  --   lazy = false,
-  --   dependencies = {
-  --     { 'kyazdani42/nvim-web-devicons', },
-  --     { 'MunifTanjim/nui.nvim', },          -- Optional
-  --     { 'hrsh7th/nvim-cmp', },              -- Optional
-  --   },
-  -- },
   -- {
   --   "hrsh7th/nvim-cmp",
   --   opts = {

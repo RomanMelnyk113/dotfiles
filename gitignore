@@ -1,0 +1,72 @@
+# Credentials and secrets
+.env
+.env.*
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+netrc
+.netrc
+
+# SSH keys
+*_rsa
+*_rsa.pub
+*_dsa
+*_dsa.pub
+*_ecdsa
+*_ecdsa.pub
+*_ed25519
+*_ed25519.pub
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+# API keys and tokens
+*.token
+credentials.json
+credentials.yml
+secrets.json
+secrets.yml
+secret.json
+secret.yml
+
+# AWS credentials
+.aws/credentials
+.aws/config
+
+# GCP credentials
+gcloud/credentials.db
+gcloud/legacy_credentials
+gcloud/access_tokens.db
+application_default_credentials.json
+
+# Kubernetes
+kubeconfig
+*.kubeconfig
+
+# Database
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Password managers
+*.kdbx
+*.kdb
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Temporary files
+*.tmp
+*.temp
+*.log
