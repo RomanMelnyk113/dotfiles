@@ -125,7 +125,7 @@ dapgo.setup {
 -- }
 
 dapui.setup {
-  icons = { expanded = "▾", collapsed = "▸" },
+  icons = { expanded = "▾", collapsed = "▸", current_frame = "→" },
   mappings = {
     expand = { "<CR>", "<2-LeftMouse>" },
     open = "o",
@@ -134,38 +134,53 @@ dapui.setup {
     repl = "r",
     toggle = "t",
   },
-  expand_lines = vim.fn.has "nvim-0.7",
+  expand_lines = true,
   layouts = {
     {
       elements = {
-        { id = "scopes", size = 0.4 },
-        { id = "breakpoints", size = 0.3 },
-        { id = "watches", size = 0.3 }, -- Instead of hover       
-        -- { id = "stacks", size = 0.3 },
+        { id = "scopes", size = 0.35 },
+        { id = "watches", size = 0.25 },
+        { id = "stacks", size = 0.25 },
+        { id = "breakpoints", size = 0.15 },
       },
-      size = 50, -- Increase width for less clutter
+      size = 60, -- Wider panel for better variable viewing
       position = "right",
     },
     {
       elements = {
-        "repl",
-        "console",
+        { id = "repl", size = 0.5 },
+        { id = "console", size = 0.5 },
       },
       size = 0.25,
       position = "bottom",
     },
   },
   floating = {
-    max_height = 0.4,   -- 40% of screen height
-    max_width = 0.6,    -- 60% of screen width
-    border = "rounded", -- Optional, looks nicer
+    max_height = 0.8,   -- Larger floating windows
+    max_width = 0.8,
+    border = "rounded",
     mappings = {
       close = { "q", "<Esc>" },
     },
   },
-  windows = { indent = 1 },
+  windows = { indent = 2 }, -- Better indentation for nested objects
   render = {
-    max_type_length = 50, -- prevent overly long lines in side panel
+    max_type_length = nil, -- Show full type info
+    max_value_lines = 100, -- Allow more lines for large variables
+  },
+  controls = {
+    enabled = true,
+    element = "repl",
+    icons = {
+      pause = "⏸",
+      play = "▶",
+      step_into = "⏎",
+      step_over = "⏭",
+      step_out = "⏮",
+      step_back = "⏪",
+      run_last = "⏮",
+      terminate = "⏹",
+    },
   },
 }
 
