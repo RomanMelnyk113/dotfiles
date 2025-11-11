@@ -8,9 +8,15 @@ local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 
--- npm install --save-dev prettier 
+-- npm install --save-dev prettier
 null_ls.setup {
   debug = false,
+  temp_dir = vim.fn.stdpath("cache") .. "/null-ls", -- Use cache directory for temp files
+  should_attach = function(bufnr)
+    -- Don't attach to certain file types to avoid issues
+    local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+    return ft ~= ""
+  end,
   -- on_attach = on_attach,
   sources = {
     formatting.prettier.with {
@@ -23,7 +29,6 @@ null_ls.setup {
     formatting.isort,
     formatting.gofmt,
     formatting.goimports,
-    formatting.goimports_reviser,
     formatting.sqlfluff.with({
         extra_args = { "--dialect", "clickhouse" }, -- change to your dialect
     }),

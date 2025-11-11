@@ -39,11 +39,11 @@ local plugins = {
     "folke/flash.nvim",
     event = "VeryLazy",
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
     config = function()
       local status_ok, flash = pcall(require, "flash")
@@ -108,6 +108,194 @@ local plugins = {
               backdrop = false,
               matches = false,
             },
+          },
+        },
+      })
+    end,
+  },
+
+  -- nvim-notify - Elegant notifications
+  {
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
+    config = function()
+      local status_ok, notify = pcall(require, "notify")
+      if not status_ok then
+        return
+      end
+      notify.setup({
+        stages = "fade_in_slide_out",
+        timeout = 3000,
+        background_colour = "#000000",
+        icons = {
+          ERROR = "",
+          WARN = "",
+          INFO = "",
+          DEBUG = "",
+          TRACE = "✎",
+        },
+        max_width = 50,
+        max_height = 10,
+        render = "compact",
+      })
+      vim.notify = notify
+    end,
+  },
+
+  -- noice.nvim - Modern UI for messages, cmdline and popups
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      local status_ok, noice = pcall(require, "noice")
+      if not status_ok then
+        return
+      end
+      noice.setup({
+        lsp = {
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+          hover = {
+            enabled = true,
+          },
+          signature = {
+            enabled = true,
+          },
+          progress = {
+            enabled = true,
+            format = "lsp_progress",
+            format_done = "lsp_progress_done",
+            view = "mini",
+          },
+        },
+        presets = {
+          bottom_search = true,
+          command_palette = false,
+          long_message_to_split = true,
+          inc_rename = false,
+          lsp_doc_border = true,
+        },
+        cmdline = {
+          view = "cmdline",
+        },
+        routes = {
+          {
+            filter = {
+              event = "msg_show",
+              kind = "",
+              find = "written",
+            },
+            opts = { skip = true },
+          },
+        },
+        views = {
+          cmdline_popup = {
+            border = {
+              style = "rounded",
+            },
+          },
+        },
+      })
+    end,
+  },
+
+  -- indent-blankline.nvim - Indentation guides
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    main = "ibl",
+    config = function()
+      local status_ok, ibl = pcall(require, "ibl")
+      if not status_ok then
+        return
+      end
+      ibl.setup({
+        indent = {
+          char = "│",
+          tab_char = "│",
+        },
+        scope = {
+          enabled = true,
+          show_start = true,
+          show_end = false,
+          injected_languages = true,
+          highlight = { "Function", "Label" },
+          priority = 500,
+        },
+        exclude = {
+          filetypes = {
+            "help",
+            "alpha",
+            "dashboard",
+            "nvim-tree",
+            "Trouble",
+            "lazy",
+            "mason",
+            "notify",
+            "toggleterm",
+            "lazyterm",
+          },
+        },
+      })
+    end,
+  },
+
+  -- dressing.nvim - Better UI for inputs and selects
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    config = function()
+      local status_ok, dressing = pcall(require, "dressing")
+      if not status_ok then
+        return
+      end
+      dressing.setup({
+        input = {
+          enabled = true,
+          default_prompt = "Input:",
+          prompt_align = "left",
+          insert_only = true,
+          start_in_insert = true,
+          border = "rounded",
+          relative = "cursor",
+          prefer_width = 40,
+          width = nil,
+          max_width = { 140, 0.9 },
+          min_width = { 20, 0.2 },
+          win_options = {
+            winblend = 0,
+            wrap = false,
+          },
+        },
+        select = {
+          enabled = true,
+          backend = { "telescope", "builtin", "nui" },
+          trim_prompt = true,
+          telescope = require("telescope.themes").get_cursor({
+            layout_config = {
+              width = 0.8,
+              height = 0.5,
+            },
+          }),
+          builtin = {
+            border = "rounded",
+            relative = "editor",
+            win_options = {
+              winblend = 0,
+            },
+            width = nil,
+            max_width = { 140, 0.8 },
+            min_width = { 40, 0.2 },
+            height = nil,
+            max_height = 0.9,
+            min_height = { 10, 0.2 },
           },
         },
       })
@@ -198,10 +386,9 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-neotest/nvim-nio",
-      "nvim-neotest/neotest-go",
       "nvim-neotest/neotest-plenary",
-      "nvim-neotest/neotest-vim-test",
       "nvim-neotest/neotest-python",
+      "nvim-neotest/neotest-go",
       "folke/neodev.nvim",
     },
   },
@@ -230,7 +417,7 @@ local plugins = {
     ft = "python",
     cmd = "VenvSelect",
     keys = {
-      { "<leader>vs", "<cmd>VenvSelect<cr>", desc = "Select VirtualEnv" },
+      { "<leader>vs", "<cmd>VenvSelect<cr>",       desc = "Select VirtualEnv" },
       { "<leader>vc", "<cmd>VenvSelectCached<cr>", desc = "Select Cached VirtualEnv" },
     },
     config = function()
