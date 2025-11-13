@@ -34,86 +34,6 @@ local plugins = {
     end,
   },
 
-  -- Flash.nvim - fast navigation
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-    },
-    config = function()
-      local status_ok, flash = pcall(require, "flash")
-      if not status_ok then
-        return
-      end
-      flash.setup({
-        labels = "asdfghjklqwertyuiopzxcvbnm",
-        search = {
-          multi_window = true,
-          forward = true,
-          wrap = true,
-          mode = "exact",
-          incremental = false,
-        },
-        jump = {
-          jumplist = true,
-          pos = "start",
-          history = false,
-          register = false,
-          nohlsearch = false,
-          autojump = false,
-        },
-        label = {
-          uppercase = true,
-          exclude = "",
-          current = true,
-          after = true,
-          before = false,
-          style = "overlay",
-          reuse = "lowercase",
-          distance = true,
-        },
-        highlight = {
-          backdrop = true,
-          matches = true,
-          priority = 5000,
-          groups = {
-            match = "FlashMatch",
-            current = "FlashCurrent",
-            backdrop = "FlashBackdrop",
-            label = "FlashLabel",
-          },
-        },
-        modes = {
-          search = {
-            enabled = true,
-          },
-          char = {
-            enabled = true,
-            keys = { "f", "F", "t", "T", ";", "," },
-            search = { wrap = false },
-            highlight = { backdrop = true },
-            jump = { register = false },
-          },
-          treesitter = {
-            labels = "abcdefghijklmnopqrstuvwxyz",
-            jump = { pos = "range" },
-            search = { incremental = false },
-            label = { before = true, after = true, style = "inline" },
-            highlight = {
-              backdrop = false,
-              matches = false,
-            },
-          },
-        },
-      })
-    end,
-  },
-
   -- nvim-notify - Elegant notifications
   {
     "rcarriga/nvim-notify",
@@ -123,7 +43,7 @@ local plugins = {
       if not status_ok then
         return
       end
-      notify.setup({
+      notify.setup {
         stages = "fade_in_slide_out",
         timeout = 3000,
         background_colour = "#000000",
@@ -137,7 +57,7 @@ local plugins = {
         max_width = 50,
         max_height = 10,
         render = "compact",
-      })
+      }
       vim.notify = notify
     end,
   },
@@ -155,7 +75,7 @@ local plugins = {
       if not status_ok then
         return
       end
-      noice.setup({
+      noice.setup {
         lsp = {
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -202,7 +122,7 @@ local plugins = {
             },
           },
         },
-      })
+      }
     end,
   },
 
@@ -216,7 +136,7 @@ local plugins = {
       if not status_ok then
         return
       end
-      ibl.setup({
+      ibl.setup {
         indent = {
           char = "│",
           tab_char = "│",
@@ -243,7 +163,7 @@ local plugins = {
             "lazyterm",
           },
         },
-      })
+      }
     end,
   },
 
@@ -256,7 +176,7 @@ local plugins = {
       if not status_ok then
         return
       end
-      dressing.setup({
+      dressing.setup {
         input = {
           enabled = true,
           default_prompt = "Input:",
@@ -278,12 +198,12 @@ local plugins = {
           enabled = true,
           backend = { "telescope", "builtin", "nui" },
           trim_prompt = true,
-          telescope = require("telescope.themes").get_cursor({
+          telescope = require("telescope.themes").get_cursor {
             layout_config = {
               width = 0.8,
               height = 0.5,
             },
-          }),
+          },
           builtin = {
             border = "rounded",
             relative = "editor",
@@ -298,7 +218,7 @@ local plugins = {
             min_height = { 10, 0.2 },
           },
         },
-      })
+      }
     end,
   },
 
@@ -379,7 +299,7 @@ local plugins = {
   {
     "nvim-neotest/neotest",
     config = function()
-      require("configs.neotest")
+      require "configs.neotest"
     end,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -388,8 +308,8 @@ local plugins = {
       "nvim-neotest/nvim-nio",
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-python",
-      "nvim-neotest/neotest-vim-test",
-      "nvim-neotest/neotest-go",
+      -- "nvim-neotest/neotest-vim-test",
+      "fredrikaverpil/neotest-golang", -- Using neotest-golang instead of neotest-go
       "folke/neodev.nvim",
     },
   },
@@ -426,9 +346,9 @@ local plugins = {
       if not status_ok then
         return
       end
-      venv_selector.setup({
+      venv_selector.setup {
         auto_refresh = true,
-      })
+      }
     end,
   },
 
@@ -471,39 +391,27 @@ local plugins = {
     end,
   },
   {
-    'Exafunction/windsurf.vim',
+    "Exafunction/windsurf.vim",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
     },
-    event = 'BufEnter',
+    event = "BufEnter",
     config = function()
       -- Change '<C-g>' here to any keycode you like.
-      vim.keymap.set('i', 'kk', function() return vim.fn['codeium#Accept']() end,
-        { expr = true, silent = true, noremap = true })
-      vim.keymap.set('i', '<C-]>', function() return vim.fn['codeium#CycleCompletions'](1) end,
-        { expr = true, silent = true })
-      vim.keymap.set('i', '<C-[>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
-        { expr = true, silent = true })
-      vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+      vim.keymap.set("i", "kk", function()
+        return vim.fn["codeium#Accept"]()
+      end, { expr = true, silent = true, noremap = true })
+      vim.keymap.set("i", "<C-]>", function()
+        return vim.fn["codeium#CycleCompletions"](1)
+      end, { expr = true, silent = true })
+      vim.keymap.set("i", "<C-[>", function()
+        return vim.fn["codeium#CycleCompletions"](-1)
+      end, { expr = true, silent = true })
+      vim.keymap.set("i", "<C-x>", function()
+        return vim.fn["codeium#Clear"]()
+      end, { expr = true, silent = true })
       -- require("codeium").setup({})
-    end
-  },
-  {
-    'kristijanhusak/vim-dadbod-ui',
-    dependencies = {
-      { 'tpope/vim-dadbod',                     lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'plsql', 'clickhouse' }, lazy = true }, -- Optional
-    },
-    cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
-    },
-    init = function()
-      -- Your DBUI configuration
-      vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
   -- {
