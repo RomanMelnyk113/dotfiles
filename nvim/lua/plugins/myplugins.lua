@@ -35,6 +35,7 @@ local plugins = {
   },
 
   -- nvim-notify - Elegant notifications
+  -- Note: Configuration is handled by noice.nvim which depends on this plugin
   {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
@@ -45,7 +46,7 @@ local plugins = {
       end
       notify.setup {
         stages = "fade_in_slide_out",
-        timeout = 3000,
+        timeout = 5000, -- Increased timeout for longer messages
         background_colour = "#000000",
         icons = {
           ERROR = "",
@@ -54,11 +55,24 @@ local plugins = {
           DEBUG = "",
           TRACE = "✎",
         },
-        max_width = 50,
-        max_height = 10,
-        render = "compact",
+        max_width = 80, -- Increased from 50 to show more text
+        max_height = 20, -- Increased from 10 to handle multiline better
+        minimum_width = 50,
+        render = "wrapped-compact", -- Better for multiline text
+        top_down = false, -- Stack from bottom up
+        -- Position notifications at bottom right
+        on_open = function(win)
+          vim.api.nvim_win_set_config(win, {
+            border = "rounded",
+            relative = "editor",
+            anchor = "SE", -- South-East (bottom-right)
+            row = vim.o.lines - 2,
+            col = vim.o.columns,
+          })
+        end,
       }
-      vim.notify = notify
+      -- Don't set vim.notify here - let noice.nvim handle it
+      -- vim.notify = notify
     end,
   },
 
@@ -84,16 +98,25 @@ local plugins = {
           },
           hover = {
             enabled = true,
+            silent = true, -- Don't show hover automatically
           },
           signature = {
             enabled = true,
+            auto_open = {
+              enabled = false, -- Don't auto-show signature help while typing
+              trigger = false, -- Don't trigger on character input
+            },
           },
           progress = {
             enabled = true,
             format = "lsp_progress",
             format_done = "lsp_progress_done",
-            view = "mini",
+            view = "mini", -- Use mini view to avoid notification spam
           },
+        },
+        notify = {
+          enabled = true,
+          view = "notify",
         },
         presets = {
           bottom_search = true,
@@ -111,6 +134,14 @@ local plugins = {
               event = "msg_show",
               kind = "",
               find = "written",
+            },
+            opts = { skip = true },
+          },
+          -- Skip signature help in insert mode to prevent popup spam
+          {
+            filter = {
+              event = "lsp",
+              kind = "signature_help",
             },
             opts = { skip = true },
           },
@@ -280,20 +311,6 @@ local plugins = {
       }
     end,
   },
-  {
-    "nvim-mini/mini.pick",
-    cmd = "Pick",
-    keys = {
-      { "<leader>fp", "<cmd>Pick files<cr>", desc = "Pick files" },
-    },
-    config = function()
-      local status_ok, mini_pick = pcall(require, "mini.pick")
-      if not status_ok then
-        return
-      end
-      mini_pick.setup()
-    end,
-  },
 
   -- Testing
   {
@@ -311,6 +328,9 @@ local plugins = {
       -- "nvim-neotest/neotest-vim-test",
       "fredrikaverpil/neotest-golang", -- Using neotest-golang instead of neotest-go
       "folke/neodev.nvim",
+      -- Add DAP as a dependency to ensure it's loaded before neotest
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
     },
   },
   -- DAP
@@ -334,7 +354,6 @@ local plugins = {
       "nvim-telescope/telescope.nvim",
       "mfussenegger/nvim-dap-python",
     },
-    branch = "regexp",
     ft = "python",
     cmd = "VenvSelect",
     keys = {

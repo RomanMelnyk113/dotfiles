@@ -28,6 +28,8 @@ neotest.setup {
         "-timeout=60s",
         "-coverprofile=coverage.out",
       },
+      warn_test_name_dupes = false, -- Disable test duplicates warning
+      warn_test_not_executed = false, -- Disable not executed warning
     },
     -- require("neotest-go")({
     --   -- experimental = {
@@ -41,6 +43,14 @@ neotest.setup {
     --   ignore_file_types = { "python", "vim", "lua" },
     -- }),
   },
+  -- Configure strategies
+  strategies = {
+    integrated = {
+      width = 180,
+      height = 40,
+    },
+  },
+  default_strategy = "integrated",
   -- Output panel configuration for better visibility
   output = {
     enabled = true,

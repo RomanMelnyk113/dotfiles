@@ -14,18 +14,24 @@ M.general = {
     ["<C-m>"] = { "<cmd>SymbolsOutline<CR>", "Toggle symbol outline", opts = { nowait = true } },
     ["<leader>fg"] = { "<cmd>Telescope dir live_grep<CR>", "Find in folder", opts = { nowait = true } },
 
-    --  format with conform
-    -- ["<leader>fm"] = {
-    --   function()
-    --     require("conform").format()
-    --   end,
-    --   "formatting",
-    -- },
+    -- Format with conform.nvim
+    ["<leader>fm"] = {
+      function()
+        require("conform").format({ async = true, lsp_fallback = true })
+      end,
+      "Format buffer",
+    },
     ["<leader>lf"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open float window" },
-    ["<leader>fm"] = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
   },
   v = {
     [">"] = { ">gv", "indent" },
+    -- Format selection with conform.nvim
+    ["<leader>fm"] = {
+      function()
+        require("conform").format({ async = true, lsp_fallback = true })
+      end,
+      "Format selection",
+    },
   },
 }
 
@@ -42,7 +48,12 @@ M.dap = {
     -- r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
     ["<leader>dl"] = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
     -- ["<leader>dt"] = { "<cmd>lua require'dap-go'.debug_test()<cr>", "Test" },
-    ["<leader>dt"] = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Test" },
+    ["<leader>dt"] = {
+      function()
+        require('neotest').run.run({strategy = "dap"})
+      end,
+      "Debug Test"
+    },
     -- u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
     -- x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
     ["<leader>dW"] = {
@@ -93,6 +104,16 @@ M.neotest = {
       "Test Output panel",
     },
     ["<leader>ro"] = { '<cmd>lua require("neotest").output.open({ enter = true, last_run = true })<cr>', "Test Output" },
+  },
+}
+
+M.diffview = {
+  n = {
+    ["<leader>dvo"] = { "<cmd>DiffviewOpen<cr>", "Open Diffview" },
+    ["<leader>dvc"] = { "<cmd>DiffviewClose<cr>", "Close Diffview" },
+    ["<leader>dvf"] = { "<cmd>DiffviewCloseForce<cr>", "Force Close Diffview" },
+    ["<leader>dvh"] = { "<cmd>DiffviewFileHistory<cr>", "File History" },
+    ["<leader>dvH"] = { "<cmd>DiffviewFileHistory %<cr>", "Current File History" },
   },
 }
 

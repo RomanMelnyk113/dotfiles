@@ -8,5 +8,20 @@ if not dapgo_status_ok then
   return
 end
 
-go.setup()
+go.setup({
+  -- Disable automatic LSP signature help to avoid popup spam
+  lsp_cfg = {
+    handlers = {
+      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { silent = true }),
+      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        silent = true,
+        focusable = false,
+        border = "rounded",
+      }),
+    },
+  },
+  lsp_inlay_hints = {
+    enable = false, -- Disable inline hints that might appear while typing
+  },
+})
 dapgo.setup()
